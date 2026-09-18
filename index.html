@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CERBERUS — Official Organization Handbook</title>
+<meta name="description" content="هندبوک رسمی سازمان CERBERUS — سازمان حفاظتی و امنیتی. Director: TRUE ALPHA">
+<meta name="theme-color" content="#050506">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   CERBERUS — PREMIUM DESIGN SYSTEM
+   ============================================================ */
+:root{
+  --bg:#050506;
+  --bg-1:#08080a;
+  --bg-2:#0c0c0f;
+  --panel:rgba(16,16,19,.72);
+  --panel-2:rgba(22,22,26,.85);
+  --line:rgba(255,255,255,.06);
+  --line-2:rgba(255,255,255,.10);
+  --line-crimson:rgba(200,16,16,.28);
+
+  --crimson:#c81010;
+  --crimson-2:#e01414;
+  --crimson-3:#ff2b2b;
+  --deep:#3a0505;
+  --deep-2:#1a0202;
+
+  --txt:#e8e8ec;
+  --txt-2:#b4b4bd;
+  --txt-3:#7a7a86;
+  --txt-4:#4d4d57;
+
+  --radius:18px;
+  --radius-sm:12px;
+  --radius-xs:8px;
+
+  --shadow-1:0 20px 60px rgba(0,0,0,.6);
+  --shadow-2:0 30px 80px rgba(0,0,0,.75);
+  --glow-soft:0 0 50px rgba(200,16,16,.14);
+  --glow-med:0 0 70px rgba(200,16,16,.22);
+
+  --nav-h:76px;
+  --font:"Vazirmatn","Inter",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  --font-en:"Inter",system-ui,-apple-system,sans-serif;
+  --mono:"SFMono-Regular",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--nav-h) + 24px);
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--txt);
+  line-height:1.85;
+  overflow-x:hidden;
+  min-height:100vh;
+  font-feature-settings:"ss01","ss02","cv01";
+  background-image:
+    radial-gradient(1400px 800px at 50% -20%, rgba(200,16,16,.10), transparent 55%),
+    radial-gradient(1000px 600px at 100% 100%, rgba(120,0,0,.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 50%, rgba(60,0,0,.10), transparent 65%);
+  background-attachment:fixed;
+  position:relative;
+}
+
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 100% 80% at 50% 30%, #000 20%, transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 100% 80% at 50% 30%, #000 20%, transparent 80%);
+  opacity:.9;
+}
+
+body::after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.014) 0px,
+    rgba(255,255,255,.014) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity:.55;
+}
+
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input{font-family:inherit;}
+
+::selection{background:rgba(200,16,16,.45);color:#fff;}
+
+::-webkit-scrollbar{width:9px;height:9px;}
+::-webkit-scrollbar-track{background:#06060a;}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#4a0505,#c81010);
+  border-radius:20px;
+  border:2px solid #06060a;
+}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#6a0808,#e01414);}
+
+.wrap{width:min(1220px,92vw);margin-inline:auto;position:relative;z-index:2;}
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+#scrollProgress{
+  position:fixed;top:0;right:0;left:0;height:2px;
+  background:linear-gradient(90deg,#c81010,#ff2b2b);
+  transform-origin:right center;
+  transform:scaleX(0);
+  z-index:200;
+  box-shadow:0 0 12px rgba(200,16,16,.7);
+  pointer-events:none;
+  transition:transform .1s linear;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  display:flex;align-items:center;
+  background:rgba(5,5,6,.55);
+  backdrop-filter:blur(20px) saturate(140%);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+.nav.scrolled{
+  height:64px;
+  background:rgba(5,5,6,.88);
+  border-bottom-color:var(--line-crimson);
+  box-shadow:0 12px 40px rgba(0,0,0,.55), 0 1px 0 rgba(200,16,16,.14);
+}
+
+.nav-inner{
+  width:min(1220px,94vw);
+  margin-inline:auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;
+}
+
+.brand{display:flex;align-items:center;gap:13px;flex-shrink:0;}
+.brand-mark{
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  border-radius:12px;
+  background:linear-gradient(155deg,#1a0202,#08080a 70%);
+  border:1px solid rgba(200,16,16,.4);
+  box-shadow:
+    0 0 24px rgba(200,16,16,.20),
+    inset 0 1px 0 rgba(255,255,255,.06),
+    inset 0 0 20px rgba(200,16,16,.08);
+  position:relative;overflow:hidden;
+  transition:all .35s ease;
+}
+.brand-mark svg{
+  width:32px;height:32px;
+  position:relative;z-index:1;
+  filter:drop-shadow(0 0 6px rgba(200,16,16,.5));
+}
+.brand-mark::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 35%,rgba(255,60,60,.30) 50%,transparent 65%);
+  transform:translateX(-150%);
+  animation:sheen 6s ease-in-out infinite;
+}
+@keyframes sheen{0%,72%{transform:translateX(-150%);}100%{transform:translateX(150%);}}
+.brand:hover .brand-mark{
+  border-color:var(--crimson-2);
+  box-shadow:0 0 30px rgba(200,16,16,.45), inset 0 0 22px rgba(200,16,16,.14);
+  transform:scale(1.05);
+}
+
+.brand-text{line-height:1.15;}
+.brand-name{
+  display:block;
+  font-family:var(--font-en);
+  font-size:.95rem;font-weight:800;
+  letter-spacing:.24em;color:#fff;
+}
+.brand-sub{
+  display:block;
+  font-family:var(--font-en);
+  font-size:.55rem;letter-spacing:.24em;
+  color:var(--txt-3);text-transform:uppercase;font-weight:500;
+}
+
+.nav-links{
+  display:flex;align-items:center;gap:2px;
+  list-style:none;
+}
+.nav-links a{
+  display:block;
+  padding:8px 12px;
+  font-family:var(--font-en);
+  font-size:.7rem;font-weight:600;
+  letter-spacing:.12em;
+  color:var(--txt-2);
+  border-radius:8px;
+  position:relative;
+  transition:color .25s ease, background .25s ease;
+  white-space:nowrap;
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;bottom:3px;right:50%;
+  transform:translateX(50%);
+  width:0;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--crimson-2),transparent);
+  border-radius:2px;
+  transition:width .3s ease;
+  box-shadow:0 0 8px var(--crimson-2);
+}
+.nav-links a:hover{color:#fff;background:rgba(200,16,16,.06);}
+.nav-links a:hover::after{width:55%;}
+.nav-links a.active{color:#fff;}
+.nav-links a.active::after{width:70%;}
+
+.nav-toggle{
+  display:none;
+  width:44px;height:44px;
+  border-radius:11px;
+  border:1px solid var(--line-crimson);
+  background:rgba(200,16,16,.05);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  padding:0;
+  transition:all .3s ease;
+}
+.nav-toggle:hover{background:rgba(200,16,16,.12);border-color:var(--crimson);}
+.nav-toggle span{
+  display:block;width:18px;height:1.5px;
+  background:var(--crimson-3);border-radius:2px;
+  transition:transform .3s ease, opacity .3s ease;
+}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:calc(100vh - var(--nav-h));
+  padding:clamp(50px,7vw,90px) 0 clamp(70px,9vw,110px);
+  display:flex;flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+.hero-bg-glow{
+  position:absolute;top:-40%;left:50%;
+  transform:translateX(-50%);
+  width:min(1100px,140vw);height:min(1100px,140vw);
+  background:radial-gradient(circle, rgba(200,16,16,.16) 0%, rgba(120,0,0,.06) 35%, transparent 65%);
+  pointer-events:none;
+  animation:heroPulse 9s ease-in-out infinite;
+}
+@keyframes heroPulse{
+  0%,100%{opacity:.8;transform:translateX(-50%) scale(1);}
+  50%{opacity:1;transform:translateX(-50%) scale(1.06);}
+}
+
+.hero-ring{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(760px,90vw);height:min(760px,90vw);
+  border:1px solid rgba(200,16,16,.10);
+  border-radius:50%;
+  pointer-events:none;
+  opacity:.6;
+}
+.hero-ring::before{
+  content:"";
+  position:absolute;inset:60px;
+  border:1px solid rgba(200,16,16,.06);
+  border-radius:50%;
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;
+  border-radius:999px;
+  border:1px solid var(--line-crimson);
+  background:rgba(200,16,16,.06);
+  backdrop-filter:blur(10px);
+  font-family:var(--font-en);
+  font-size:.62rem;letter-spacing:.32em;
+  color:#ff9090;text-transform:uppercase;font-weight:600;
+  margin-bottom:28px;
+  position:relative;z-index:1;
+}
+.hero-badge .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--crimson-3);
+  box-shadow:0 0 10px var(--crimson-3);
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* ============================================================
+   3D HERO LOGO
+   ============================================================ */
+.hero-logo-wrap{
+  width:clamp(120px,20vw,180px);
+  height:clamp(120px,20vw,180px);
+  margin:0 auto 20px;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 8px 40px rgba(200,16,16,.35));
+  animation:logoFloat 6s ease-in-out infinite;
+  z-index:1;
+}
+.hero-logo-wrap svg{
+  width:100%;height:100%;
+  overflow:visible;
+}
+@keyframes logoFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+.hero-logo-wrap::after{
+  content:"";
+  position:absolute;
+  bottom:-18px;left:50%;
+  transform:translateX(-50%);
+  width:70%;height:12px;
+  background:radial-gradient(ellipse, rgba(200,16,16,.35), transparent 70%);
+  filter:blur(6px);
+  animation:logoShadowPulse 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes logoShadowPulse{
+  0%,100%{opacity:.7;transform:translateX(-50%) scale(1);}
+  50%{opacity:1;transform:translateX(-50%) scale(.85);}
+}
+
+.hero h1{
+  font-family:var(--font-en);
+  font-size:clamp(3.4rem,14vw,8.5rem);
+  font-weight:900;
+  letter-spacing:.04em;
+  line-height:.95;
+  color:#fff;
+  margin:0 0 20px;
+  position:relative;z-index:1;
+  text-shadow:
+    0 0 30px rgba(200,16,16,.35),
+    0 0 80px rgba(200,16,16,.18);
+}
+.hero h1 span{
+  background:linear-gradient(180deg,#ffffff 10%, #ffe0e0 45%, #c81010 130%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-tagline{
+  font-family:var(--font-en);
+  font-size:clamp(.68rem,2.2vw,.95rem);
+  letter-spacing:.44em;
+  text-transform:uppercase;
+  color:var(--txt-2);
+  font-weight:500;
+  margin:0 0 42px;
+  position:relative;z-index:1;
+}
+
+.hero-divider{
+  width:min(480px,72vw);
+  height:1px;
+  margin:0 auto 40px;
+  background:linear-gradient(90deg,transparent,rgba(200,16,16,.65),transparent);
+  position:relative;
+}
+.hero-divider::after{
+  content:"";
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  width:7px;height:7px;
+  background:var(--crimson);
+  box-shadow:0 0 14px var(--crimson);
+}
+
+.director-block{
+  display:inline-flex;
+  flex-direction:column;align-items:center;
+  gap:6px;
+  padding:26px 52px;
+  border-radius:var(--radius);
+  border:1px solid rgba(200,16,16,.32);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200,16,16,.14), transparent 70%),
+    linear-gradient(180deg, rgba(20,3,3,.72), rgba(8,8,10,.72));
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow:
+    var(--shadow-1),
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 0 60px rgba(200,16,16,.10);
+  position:relative;
+  margin-bottom:20px;
+  overflow:hidden;
+  z-index:1;
+}
+.director-block::before{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 42%,rgba(200,16,16,.12) 50%,transparent 58%);
+  transform:translateX(-100%);
+  animation:sweep 7s ease-in-out infinite;
+}
+@keyframes sweep{0%,68%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+
+.director-label{
+  font-family:var(--font-en);
+  font-size:.58rem;letter-spacing:.5em;
+  color:#ff8080;text-transform:uppercase;font-weight:700;
+}
+.director-name{
+  font-family:var(--font-en);
+  font-size:clamp(1.6rem,6vw,2.6rem);
+  font-weight:900;
+  letter-spacing:.18em;
+  color:#fff;line-height:1.15;
+  text-shadow:0 0 26px rgba(200,16,16,.55);
+}
+
+.credits-block{
+  display:inline-flex;
+  flex-direction:column;align-items:center;
+  gap:8px;
+  padding:16px 34px;
+  border-radius:999px;
+  border:1px solid var(--line-2);
+  background:rgba(255,255,255,.02);
+  backdrop-filter:blur(10px);
+  position:relative;z-index:1;
+  margin-bottom:36px;
+}
+.credits-label{
+  font-family:var(--font-en);
+  font-size:.55rem;letter-spacing:.42em;
+  color:var(--txt-3);text-transform:uppercase;font-weight:600;
+}
+.credits-names{
+  font-family:var(--font-en);
+  font-size:clamp(.85rem,2.6vw,1.05rem);
+  font-weight:800;
+  letter-spacing:.22em;
+  color:#fff;
+}
+.credits-names .sep{
+  color:var(--crimson-2);
+  margin:0 12px;
+  font-weight:400;
+}
+
+.hero-desc{
+  max-width:720px;
+  margin:0 auto 42px;
+  font-size:clamp(.9rem,2.4vw,1.02rem);
+  color:var(--txt-2);
+  line-height:2.1;
+  position:relative;z-index:1;
+}
+
+.hero-actions{
+  display:flex;flex-wrap:wrap;gap:14px;
+  justify-content:center;
+  position:relative;z-index:1;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:10px;
+  padding:15px 34px;
+  border-radius:12px;
+  font-family:var(--font-en);
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.4,0,.2,1),
+             box-shadow .35s ease,
+             background .3s ease,
+             color .3s ease,
+             border-color .3s ease;
+  white-space:nowrap;
+}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+.btn-primary{
+  background:linear-gradient(135deg,#8a0505,#c81010 50%,#5a0303);
+  color:#fff;
+  border:1px solid rgba(255,80,80,.4);
+  box-shadow:
+    0 10px 34px rgba(200,16,16,.30),
+    inset 0 1px 0 rgba(255,255,255,.15);
+}
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 18px 50px rgba(200,16,16,.50),
+    inset 0 1px 0 rgba(255,255,255,.22);
+}
+.btn-primary::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 38%,rgba(255,255,255,.22) 50%,transparent 62%);
+  transform:translateX(-140%);
+  transition:transform .7s ease;
+}
+.btn-primary:hover::after{transform:translateX(140%);}
+
+.btn-ghost{
+  background:rgba(255,255,255,.02);
+  color:var(--txt);
+  border:1px solid var(--line-crimson);
+  backdrop-filter:blur(10px);
+}
+.btn-ghost:hover{
+  transform:translateY(-3px);
+  background:rgba(200,16,16,.10);
+  border-color:var(--crimson);
+  color:#fff;
+  box-shadow:0 12px 36px rgba(200,16,16,.25);
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section{
+  padding:clamp(80px,10vw,130px) 0;
+  position:relative;
+}
+.section + .section{border-top:1px solid rgba(255,255,255,.04);}
+
+.sec-head{
+  margin-bottom:clamp(40px,6vw,64px);
+  max-width:820px;
+}
+.sec-kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-en);
+  font-size:.6rem;letter-spacing:.38em;
+  text-transform:uppercase;
+  color:#ff8080;font-weight:700;
+  margin-bottom:16px;
+}
+.sec-kicker::before{
+  content:"";
+  width:30px;height:1.5px;
+  background:linear-gradient(90deg,var(--crimson-2),transparent);
+  border-radius:2px;
+  box-shadow:0 0 10px var(--crimson);
+}
+.sec-title{
+  font-size:clamp(1.6rem,4.8vw,2.6rem);
+  font-weight:900;
+  line-height:1.35;
+  color:#fff;
+  letter-spacing:-.01em;
+  margin:0 0 14px;
+}
+.sec-title em{
+  font-style:normal;
+  color:var(--crimson-3);
+  text-shadow:0 0 26px rgba(200,16,16,.5);
+}
+.sec-desc{
+  color:var(--txt-3);
+  font-size:.94rem;
+  line-height:2.05;
+  max-width:720px;
+}
+
+/* ============================================================
+   HANDBOOK ACCORDION
+   ============================================================ */
+.accordion{
+  display:flex;flex-direction:column;gap:14px;
+}
+
+.acc-item{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:linear-gradient(180deg, rgba(16,16,19,.72), rgba(8,8,10,.72));
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  overflow:hidden;
+  transition:border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+  position:relative;
+}
+.acc-item::before{
+  content:"";
+  position:absolute;top:0;right:0;
+  width:2px;height:0;
+  background:linear-gradient(180deg,var(--crimson-3),var(--deep));
+  transition:height .5s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 12px rgba(200,16,16,.6);
+}
+.acc-item:hover{
+  border-color:rgba(200,16,16,.28);
+  box-shadow:0 14px 40px rgba(0,0,0,.4), 0 0 30px rgba(200,16,16,.06);
+}
+.acc-item.open{
+  border-color:rgba(200,16,16,.45);
+  box-shadow:0 20px 50px rgba(0,0,0,.5), 0 0 46px rgba(200,16,16,.12);
+}
+.acc-item.open::before{height:100%;}
+
+.acc-head{
+  width:100%;
+  display:flex;align-items:center;gap:18px;
+  padding:22px 24px;
+  text-align:right;
+  transition:background .25s ease;
+}
+.acc-head:hover{background:rgba(200,16,16,.04);}
+
+.acc-num{
+  flex-shrink:0;
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border-radius:12px;
+  font-family:var(--mono);
+  font-size:.88rem;font-weight:700;
+  color:#ff9090;
+  background:linear-gradient(150deg, rgba(200,16,16,.16), rgba(16,16,19,.6));
+  border:1px solid rgba(200,16,16,.30);
+  box-shadow:inset 0 0 18px rgba(200,16,16,.08);
+  transition:all .35s ease;
+}
+.acc-item.open .acc-num{
+  color:#fff;
+  background:linear-gradient(150deg,#c81010,#5a0303);
+  box-shadow:0 0 24px rgba(200,16,16,.45), inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.acc-title{
+  flex:1;
+  font-size:clamp(.88rem,2.4vw,1rem);
+  font-weight:700;
+  color:#fff;line-height:1.6;
+}
+
+.acc-arrow{
+  flex-shrink:0;
+  width:28px;height:28px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  border:1px solid var(--line-2);
+  transition:transform .4s cubic-bezier(.4,0,.2,1),
+             border-color .3s ease,
+             background .3s ease;
+}
+.acc-arrow svg{
+  width:13px;height:13px;
+  stroke:var(--txt-2);fill:none;stroke-width:2.2;
+  transition:stroke .3s ease;
+}
+.acc-item.open .acc-arrow{
+  transform:rotate(180deg);
+  border-color:var(--crimson);
+  background:rgba(200,16,16,.14);
+}
+.acc-item.open .acc-arrow svg{stroke:var(--crimson-3);}
+
+.acc-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .5s cubic-bezier(.4,0,.2,1);
+}
+.acc-body-inner{
+  padding:0 24px 26px 24px;
+  color:var(--txt-2);
+  font-size:.9rem;
+  line-height:2.1;
+  border-top:1px dashed rgba(200,16,16,.16);
+  margin:0 24px;
+  padding-inline:0;
+  padding-top:20px;
+}
+.acc-body-inner p{margin:0 0 12px;}
+.acc-body-inner p:last-child{margin-bottom:0;}
+
+.acc-list{
+  list-style:none;
+  counter-reset:li;
+  display:flex;flex-direction:column;gap:12px;
+}
+.acc-list li{
+  position:relative;
+  padding-right:42px;
+  counter-increment:li;
+  line-height:2;
+}
+.acc-list li::before{
+  content:counter(li,decimal-leading-zero);
+  position:absolute;
+  right:0;top:.35em;
+  font-family:var(--mono);
+  font-size:.65rem;font-weight:700;
+  color:#ff8080;
+  background:rgba(200,16,16,.08);
+  border:1px solid rgba(200,16,16,.24);
+  border-radius:6px;
+  padding:2px 7px;
+  line-height:1.4;
+}
+
+.chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 18px;
+  border-radius:999px;
+  font-size:.74rem;font-weight:700;
+  letter-spacing:.06em;
+  color:#ff9090;
+  background:rgba(200,16,16,.08);
+  border:1px solid rgba(200,16,16,.28);
+  transition:all .3s ease;
+}
+.chip:hover{
+  background:rgba(200,16,16,.18);
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(200,16,16,.22);
+}
+
+.hl{
+  color:#fff;
+  font-weight:700;
+  background:linear-gradient(180deg, transparent 62%, rgba(200,16,16,.32) 62%);
+  padding:0 3px;
+}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{display:grid;gap:20px;}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+
+.card{
+  position:relative;
+  padding:28px 26px;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(16,16,19,.72), rgba(8,8,10,.72));
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:transform .35s cubic-bezier(.4,0,.2,1),
+             border-color .35s ease,
+             box-shadow .35s ease;
+  overflow:hidden;
+}
+.card::after{
+  content:"";
+  position:absolute;top:0;right:0;
+  width:100%;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--crimson-2),transparent);
+  opacity:0;
+  transition:opacity .4s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(200,16,16,.32);
+  box-shadow:0 22px 50px rgba(0,0,0,.5), 0 0 40px rgba(200,16,16,.08);
+}
+.card:hover::after{opacity:1;}
+
+.card-icon{
+  width:50px;height:50px;
+  display:grid;place-items:center;
+  border-radius:13px;
+  margin-bottom:18px;
+  background:linear-gradient(150deg, rgba(200,16,16,.15), rgba(16,16,19,.5));
+  border:1px solid rgba(200,16,16,.26);
+  box-shadow:inset 0 0 18px rgba(200,16,16,.08);
+}
+.card-icon svg{
+  width:22px;height:22px;
+  stroke:var(--crimson-3);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+
+.card h3{
+  margin:0 0 10px;
+  font-size:1rem;font-weight:700;
+  color:#fff;line-height:1.6;
+}
+.card p{
+  margin:0;
+  font-size:.85rem;
+  color:var(--txt-3);
+  line-height:2;
+}
+
+.card-idx{
+  position:absolute;
+  top:16px;left:22px;
+  font-family:var(--mono);
+  font-size:.66rem;font-weight:700;
+  color:rgba(200,16,16,.5);
+  letter-spacing:.12em;
+}
+
+/* ============================================================
+   SERVICES / PRICING
+   ============================================================ */
+.price-wrap{display:flex;justify-content:center;}
+.price-card{
+  width:min(580px,100%);
+  position:relative;
+  padding:clamp(36px,5vw,56px) clamp(28px,4vw,52px);
+  border-radius:24px;
+  text-align:center;
+  border:1px solid rgba(200,16,16,.38);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200,16,16,.15), transparent 62%),
+    linear-gradient(180deg, rgba(22,4,4,.85), rgba(8,8,10,.92));
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.65),
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 0 60px rgba(200,16,16,.10);
+  animation:pricePulse 5s ease-in-out infinite;
+  overflow:hidden;
+}
+@keyframes pricePulse{
+  0%,100%{box-shadow:0 30px 70px rgba(0,0,0,.65), 0 0 40px rgba(200,16,16,.12), inset 0 1px 0 rgba(255,255,255,.05);}
+  50%{box-shadow:0 30px 70px rgba(0,0,0,.65), 0 0 80px rgba(200,16,16,.24), inset 0 1px 0 rgba(255,255,255,.05);}
+}
+
+.price-tag{
+  display:inline-block;
+  padding:7px 20px;
+  border-radius:999px;
+  font-family:var(--font-en);
+  font-size:.58rem;letter-spacing:.36em;
+  text-transform:uppercase;font-weight:700;
+  color:#ff9090;
+  background:rgba(200,16,16,.12);
+  border:1px solid rgba(200,16,16,.32);
+  margin-bottom:28px;
+}
+.price-title{
+  font-family:var(--font-en);
+  font-size:clamp(1.05rem,3.4vw,1.5rem);
+  font-weight:900;
+  letter-spacing:.24em;
+  color:#fff;
+  margin:0 0 28px;
+  text-transform:uppercase;
+}
+.price-value{
+  font-family:var(--font-en);
+  font-size:clamp(2.6rem,10vw,4.2rem);
+  font-weight:900;
+  line-height:1;
+  color:#fff;
+  letter-spacing:-.02em;
+  text-shadow:0 0 34px rgba(200,16,16,.55);
+  margin:0;
+}
+.price-value small{
+  display:block;
+  font-size:.28em;
+  font-weight:700;
+  letter-spacing:.28em;
+  color:#ff8080;
+  margin-top:16px;
+}
+.price-note{
+  margin:30px auto 0;
+  padding-top:26px;
+  border-top:1px dashed rgba(200,16,16,.22);
+  font-size:.85rem;
+  color:var(--txt-2);
+  line-height:2.1;
+  max-width:420px;
+}
+.price-features{
+  list-style:none;
+  margin:28px 0 0;
+  display:flex;flex-direction:column;gap:12px;
+  text-align:right;
+}
+.price-features li{
+  display:flex;align-items:flex-start;gap:11px;
+  font-size:.82rem;
+  color:var(--txt-2);
+  line-height:1.9;
+}
+.price-features li svg{
+  flex-shrink:0;
+  width:16px;height:16px;
+  margin-top:5px;
+  stroke:var(--crimson-3);fill:none;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* ============================================================
+   RANK REVIEW
+   ============================================================ */
+.rank-banner{
+  display:flex;flex-wrap:wrap;align-items:center;gap:20px;
+  padding:26px 32px;
+  border-radius:var(--radius);
+  border:1px solid rgba(200,16,16,.30);
+  background:linear-gradient(120deg, rgba(200,16,16,.12), rgba(12,12,15,.85) 55%);
+  margin-bottom:28px;
+  box-shadow:0 18px 46px rgba(0,0,0,.4);
+}
+.rank-banner svg{
+  width:32px;height:32px;
+  stroke:var(--crimson-3);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;
+  flex-shrink:0;
+}
+.rank-banner p{
+  margin:0;
+  font-size:clamp(.9rem,2.5vw,1.05rem);
+  font-weight:700;color:#fff;
+}
+
+.result-badges{
+  display:flex;flex-wrap:wrap;gap:12px;
+  margin-top:28px;
+}
+.result-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 22px;
+  border-radius:12px;
+  font-family:var(--font-en);
+  font-size:.74rem;font-weight:700;
+  letter-spacing:.08em;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.02);
+  color:var(--txt-2);
+  transition:all .3s ease;
+}
+.result-badge:hover{transform:translateY(-3px);}
+.result-badge.promote{border-color:rgba(46,204,113,.4);color:#7ee2a8;background:rgba(46,204,113,.06);}
+.result-badge.stable{border-color:rgba(255,255,255,.16);color:#dcdce2;background:rgba(255,255,255,.03);}
+.result-badge.demote{border-color:rgba(255,140,0,.4);color:#ffb160;background:rgba(255,140,0,.06);}
+.result-badge.warn{border-color:rgba(200,16,16,.45);color:#ff8080;background:rgba(200,16,16,.08);}
+
+/* ============================================================
+   DISCIPLINE
+   ============================================================ */
+.discipline{
+  border-radius:24px;
+  border:1px solid rgba(200,16,16,.36);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200,16,16,.14), transparent 62%),
+    linear-gradient(180deg, rgba(24,4,4,.88), rgba(6,6,8,.94));
+  padding:clamp(32px,5vw,56px);
+  box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04);
+  position:relative;
+  overflow:hidden;
+}
+.discipline::before{
+  content:"";
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg, rgba(200,16,16,.03) 0 14px, transparent 14px 28px);
+  pointer-events:none;
+}
+
+.disc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+  position:relative;z-index:1;
+}
+.disc-item{
+  padding:26px 22px;
+  border-radius:14px;
+  border:1px solid rgba(200,16,16,.24);
+  background:linear-gradient(180deg, rgba(32,5,5,.6), rgba(10,10,12,.7));
+  transition:transform .32s ease, border-color .32s ease, box-shadow .32s ease;
+  text-align:center;
+}
+.disc-item:hover{
+  transform:translateY(-6px);
+  border-color:var(--crimson-2);
+  box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 34px rgba(200,16,16,.24);
+}
+.disc-code{
+  font-family:var(--mono);
+  font-size:.76rem;font-weight:700;
+  letter-spacing:.22em;
+  color:var(--crimson-3);
+  margin-bottom:12px;
+  text-shadow:0 0 16px rgba(200,16,16,.6);
+}
+.disc-fa{
+  font-size:1.05rem;
+  font-weight:800;
+  color:#fff;
+}
+.disc-item .bar{
+  width:36px;height:1.5px;
+  margin:14px auto 0;
+  background:linear-gradient(90deg,transparent,var(--crimson),transparent);
+  border-radius:2px;
+}
+
+/* ============================================================
+   RADIO CODES
+   ============================================================ */
+.radio-top{
+  display:flex;flex-wrap:wrap;
+  align-items:center;justify-content:space-between;
+  gap:20px;
+  padding:24px 28px;
+  border-radius:var(--radius);
+  border:1px solid rgba(200,16,16,.30);
+  background:linear-gradient(120deg, rgba(200,16,16,.10), rgba(12,12,15,.85) 60%);
+  margin-bottom:24px;
+  box-shadow:0 18px 46px rgba(0,0,0,.4);
+}
+.radio-title{
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--font-en);
+  font-size:clamp(.85rem,2.6vw,1.05rem);
+  font-weight:900;
+  letter-spacing:.18em;
+  color:#fff;
+  text-transform:uppercase;
+}
+.radio-title .live{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--crimson-3);
+  box-shadow:0 0 0 0 rgba(200,16,16,.65);
+  animation:livePulse 2.2s infinite;
+}
+@keyframes livePulse{
+  0%{box-shadow:0 0 0 0 rgba(200,16,16,.55);}
+  70%{box-shadow:0 0 0 12px rgba(200,16,16,0);}
+  100%{box-shadow:0 0 0 0 rgba(200,16,16,0);}
+}
+
+.search-box{
+  position:relative;
+  flex:1;
+  min-width:min(320px,100%);
+  max-width:440px;
+}
+.search-box svg{
+  position:absolute;
+  top:50%;right:18px;
+  transform:translateY(-50%);
+  width:17px;height:17px;
+  stroke:var(--txt-3);fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;
+  pointer-events:none;
+  transition:stroke .3s ease;
+}
+.search-box input{
+  width:100%;
+  padding:15px 50px 15px 20px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(5,5,7,.85);
+  color:#fff;
+  font-size:.88rem;
+  outline:none;
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+.search-box input::placeholder{color:var(--txt-4);}
+.search-box input:focus{
+  border-color:var(--crimson);
+  box-shadow:0 0 0 3px rgba(200,16,16,.14), 0 0 30px rgba(200,16,16,.14);
+}
+.search-box:focus-within svg{stroke:var(--crimson-3);}
+
+.radio-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;
+  margin-bottom:22px;
+  font-family:var(--font-en);
+  font-size:.7rem;letter-spacing:.16em;
+  color:var(--txt-3);
+  text-transform:uppercase;
+}
+.radio-meta strong{
+  color:var(--crimson-3);
+  font-family:var(--mono);
+  font-weight:700;
+}
+
+.codes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+
+.code-card{
+  position:relative;
+  padding:22px 22px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(16,16,19,.78), rgba(8,8,10,.78));
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  overflow:hidden;
+  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  animation:fadeUp .45s ease backwards;
+}
+.code-card::before{
+  content:"";
+  position:absolute;top:0;right:0;
+  width:0;height:1.5px;
+  background:linear-gradient(90deg,var(--crimson-3),transparent);
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 12px var(--crimson);
+}
+.code-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(200,16,16,.4);
+  box-shadow:0 20px 46px rgba(0,0,0,.55), 0 0 38px rgba(200,16,16,.12);
+}
+.code-card:hover::before{width:100%;}
+
+.code-badge{
+  display:inline-block;
+  padding:3px 12px;
+  border-radius:999px;
+  font-family:var(--font-en);
+  font-size:.55rem;font-weight:800;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:#ff9090;
+  background:rgba(200,16,16,.12);
+  border:1px solid rgba(200,16,16,.35);
+  margin-bottom:14px;
+}
+.code-num{
+  font-family:var(--mono);
+  font-size:clamp(1.35rem,4.6vw,1.8rem);
+  font-weight:800;
+  color:#fff;
+  letter-spacing:.04em;
+  line-height:1.2;
+  text-shadow:0 0 22px rgba(200,16,16,.45);
+  margin-bottom:10px;
+  word-break:break-word;
+}
+.code-en{
+  font-family:var(--font-en);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:#ff8080;
+  margin-bottom:10px;
+  text-transform:uppercase;
+  line-height:1.7;
+}
+.code-fa{
+  font-size:.86rem;
+  color:var(--txt-2);
+  line-height:1.95;
+}
+
+.no-result{
+  display:none;
+  padding:60px 24px;
+  text-align:center;
+  border-radius:var(--radius);
+  border:1px dashed rgba(200,16,16,.30);
+  background:rgba(200,16,16,.03);
+  color:var(--txt-3);
+  font-size:.9rem;
+}
+.no-result.show{display:block;}
+.no-result strong{
+  display:block;
+  color:#ff8080;
+  margin-bottom:8px;
+  font-family:var(--font-en);
+  font-size:1rem;
+  letter-spacing:.16em;
+}
+
+/* ============================================================
+   ACCEPTANCE
+   ============================================================ */
+.accept-box{
+  position:relative;
+  padding:clamp(34px,5vw,58px);
+  border-radius:24px;
+  border:1px solid rgba(200,16,16,.36);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200,16,16,.14), transparent 62%),
+    linear-gradient(180deg, rgba(20,20,24,.85), rgba(6,6,8,.92));
+  text-align:center;
+  box-shadow:0 30px 70px rgba(0,0,0,.6);
+  overflow:hidden;
+}
+.accept-box .seal{
+  width:82px;height:82px;
+  margin:0 auto 24px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  border:1px solid rgba(200,16,16,.4);
+  background:radial-gradient(circle, rgba(200,16,16,.18), rgba(8,8,10,.9));
+  box-shadow:0 0 44px rgba(200,16,16,.25), inset 0 0 22px rgba(200,16,16,.12);
+}
+.accept-box .seal svg{
+  width:52px;height:52px;
+  filter:drop-shadow(0 0 8px rgba(200,16,16,.4));
+}
+.accept-box p{
+  max-width:760px;
+  margin:0 auto;
+  font-size:clamp(.9rem,2.5vw,1.02rem);
+  color:var(--txt-2);
+  line-height:2.2;
+}
+.accept-sign{
+  margin-top:34px;
+  padding-top:28px;
+  border-top:1px dashed rgba(200,16,16,.22);
+  display:flex;flex-wrap:wrap;
+  gap:14px 42px;
+  justify-content:center;
+  font-family:var(--font-en);
+  font-size:.7rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--txt-3);
+}
+.accept-sign b{color:#fff;letter-spacing:.22em;font-weight:800;}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  margin-top:40px;
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(6,6,8,.6), rgba(2,2,3,.96));
+  padding:clamp(48px,7vw,76px) 0 36px;
+  position:relative;
+}
+.footer::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,16,16,.6),transparent);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:38px;
+  margin-bottom:44px;
+}
+.footer-brand h4{
+  font-family:var(--font-en);
+  margin:0 0 8px;
+  font-size:1.5rem;
+  font-weight:900;
+  letter-spacing:.22em;
+  color:#fff;
+  text-shadow:0 0 24px rgba(200,16,16,.4);
+}
+.footer-brand p{
+  margin:0 0 6px;
+  font-size:.78rem;
+  color:var(--txt-3);
+  letter-spacing:.06em;
+}
+.footer-brand p strong{color:#fff;}
+.footer-col h5{
+  margin:0 0 16px;
+  font-family:var(--font-en);
+  font-size:.66rem;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:#ff8080;
+  font-weight:800;
+}
+.footer-col ul{
+  list-style:none;
+  display:flex;flex-direction:column;gap:10px;
+}
+.footer-col a{
+  font-size:.82rem;
+  color:var(--txt-2);
+  transition:color .25s ease, padding-right .25s ease;
+  display:inline-block;
+}
+.footer-col a:hover{color:var(--crimson-3);padding-right:6px;}
+
+.footer-bottom{
+  padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.05);
+  display:flex;flex-wrap:wrap;
+  gap:14px;
+  align-items:center;justify-content:space-between;
+  font-family:var(--font-en);
+  font-size:.7rem;
+  letter-spacing:.16em;
+  color:var(--txt-4);
+  text-transform:uppercase;
+}
+.footer-bottom .status{
+  display:inline-flex;align-items:center;gap:8px;
+  color:#ff8080;
+}
+.footer-bottom .status i{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--crimson-3);
+  box-shadow:0 0 10px var(--crimson-3);
+  animation:blink 2s ease-in-out infinite;
+  display:inline-block;
+}
+
+.dev-credit{
+  margin-top:26px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.04);
+  text-align:center;
+  font-family:var(--font-en);
+  font-size:.68rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--txt-4);
+  transition:color .3s ease;
+}
+.dev-credit:hover{color:var(--crimson-3);}
+.dev-credit b{
+  color:var(--txt-2);
+  font-weight:700;
+  letter-spacing:.22em;
+  transition:color .3s ease;
+}
+.dev-credit:hover b{color:var(--crimson-3);}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.reveal{
+  opacity:0;
+  transform:translateY(26px);
+  transition:opacity .8s cubic-bezier(.4,0,.2,1),
+             transform .8s cubic-bezier(.4,0,.2,1);
+  will-change:opacity,transform;
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  .reveal{opacity:1;transform:none;}
+  .hero-logo-wrap{animation:none;}
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1080px){
+  .nav-links a{padding:8px 9px;font-size:.66rem;letter-spacing:.08em;}
+}
+
+@media (max-width:920px){
+  .nav-toggle{display:flex;}
+  .nav-links{
+    position:fixed;
+    top:var(--nav-h);right:0;left:0;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:16px 5vw 28px;
+    background:rgba(5,5,6,.97);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--line-crimson);
+    box-shadow:0 30px 60px rgba(0,0,0,.8);
+    max-height:calc(100vh - var(--nav-h));
+    overflow-y:auto;
+    transform:translateY(-14px);
+    opacity:0;visibility:hidden;
+    transition:opacity .32s ease, transform .32s ease, visibility .32s ease;
+  }
+  .nav-links.open{
+    transform:translateY(0);
+    opacity:1;visibility:visible;
+  }
+  .nav-links li{border-bottom:1px solid rgba(255,255,255,.04);}
+  .nav-links li:last-child{border-bottom:none;}
+  .nav-links a{
+    padding:16px 6px;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    border-radius:0;
+  }
+  .nav-links a::after{bottom:9px;}
+  .nav-links a:hover{background:rgba(200,16,16,.06);}
+  .nav.scrolled{height:var(--nav-h);}
+}
+
+@media (max-width:640px){
+  :root{--nav-h:66px;}
+  .brand-sub{display:none;}
+  .brand-name{font-size:.85rem;letter-spacing:.18em;}
+  .brand-mark{width:38px;height:38px;}
+  .brand-mark svg{width:28px;height:28px;}
+
+  .hero{padding:40px 0 70px;}
+  .hero-logo-wrap{width:110px;height:110px;margin-bottom:14px;}
+  .hero-tagline{letter-spacing:.26em;line-height:2;}
+  .director-block{padding:20px 28px;width:100%;max-width:440px;}
+  .credits-block{padding:14px 24px;max-width:100%;}
+  .credits-names{letter-spacing:.14em;}
+  .credits-names .sep{margin:0 8px;}
+
+  .hero-actions{flex-direction:column;width:100%;}
+  .hero-actions .btn{width:100%;}
+
+  .acc-head{padding:18px 18px;gap:14px;}
+  .acc-num{width:42px;height:42px;font-size:.76rem;}
+  .acc-body-inner{margin:0 18px;padding-top:18px;padding-bottom:22px;}
+
+  .codes-grid{grid-template-columns:1fr;}
+  .code-num{font-size:1.55rem;}
+
+  .radio-top{padding:20px;flex-direction:column;align-items:stretch;}
+  .search-box{max-width:none;min-width:0;}
+
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px;}
+
+  .card{padding:24px 20px;}
+  .disc-item{padding:20px 16px;}
+
+  .accept-sign{gap:10px 24px;}
+}
+
+@media (max-width:400px){
+  .hero h1{font-size:2.8rem;}
+  .hero-logo-wrap{width:96px;height:96px;}
+  .director-name{font-size:1.5rem;}
+  .btn{padding:14px 22px;font-size:.68rem;}
+  .code-badge{font-size:.5rem;letter-spacing:.18em;}
+  .price-value{font-size:2.4rem;}
+}
+
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:2px solid var(--crimson-3);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+@media print{
+  .nav,.nav-toggle,#scrollProgress{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand" aria-label="CERBERUS — Home">
+      <span class="brand-mark" aria-hidden="true">
+        <!-- ============ 3D BRAND LOGO (C) ============ -->
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="bmCGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="30%" stop-color="#c8c8d0"/>
+              <stop offset="55%" stop-color="#7a7a82"/>
+              <stop offset="75%" stop-color="#c81010"/>
+              <stop offset="100%" stop-color="#3a0202"/>
+            </linearGradient>
+            <linearGradient id="bmHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
+            </linearGradient>
+            <filter id="bmShadow">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="1.2"/>
+              <feOffset dx="1" dy="1.5"/>
+              <feComponentTransfer><feFuncA type="linear" slope="0.75"/></feComponentTransfer>
+              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#bmShadow)">
+            <!-- Shadow offset -->
+            <path d="M72 30
+                     C 54 20, 32 28, 26 50
+                     C 20 72, 32 92, 55 95
+                     C 72 97, 85 88, 90 75
+                     L 76 68
+                     C 72 78, 64 84, 54 83
+                     C 40 82, 34 68, 38 56
+                     C 42 42, 56 38, 68 42
+                     L 72 30 Z"
+                  fill="#1a0202"
+                  transform="translate(1.5, 2)"/>
+            <!-- Main C -->
+            <path d="M72 30
+                     C 54 20, 32 28, 26 50
+                     C 20 72, 32 92, 55 95
+                     C 72 97, 85 88, 90 75
+                     L 76 68
+                     C 72 78, 64 84, 54 83
+                     C 40 82, 34 68, 38 56
+                     C 42 42, 56 38, 68 42
+                     L 72 30 Z"
+                  fill="url(#bmCGrad)"/>
+            <!-- Highlight -->
+            <path d="M72 30
+                     C 54 20, 32 28, 26 50
+                     C 22 66, 26 82, 36 90
+                     L 30 82
+                     C 22 68, 22 52, 30 40
+                     C 40 26, 58 22, 70 28
+                     Z"
+                  fill="url(#bmHighlight)"
+                  opacity="0.85"/>
+          </g>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">CERBERUS</span>
+        <span class="brand-sub">Security &amp; Protection</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="منو" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">HOME</a></li>
+      <li><a href="#handbook">HANDBOOK</a></li>
+      <li><a href="#duties">DUTIES</a></li>
+      <li><a href="#services">SERVICES</a></li>
+      <li><a href="#rank">RANK REVIEW</a></li>
+      <li><a href="#discipline">DISCIPLINE</a></li>
+      <li><a href="#radio">RADIO CODES</a></li>
+      <li><a href="#acceptance">ACCEPTANCE</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+  <div class="hero-ring" aria-hidden="true"></div>
+
+  <div class="wrap">
+
+    <div class="hero-badge reveal">
+      <span class="dot"></span>
+      Official Organization Handbook
+    </div>
+
+    <!-- ============ 3D HERO LOGO (C) ============ -->
+    <div class="hero-logo-wrap reveal" aria-hidden="true">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4a0505"/>
+            <stop offset="25%" stop-color="#c81010"/>
+            <stop offset="50%" stop-color="#ff2b2b"/>
+            <stop offset="75%" stop-color="#8a0505"/>
+            <stop offset="100%" stop-color="#3a0202"/>
+          </linearGradient>
+
+          <linearGradient id="cGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="15%" stop-color="#e8e8ec"/>
+            <stop offset="35%" stop-color="#a0a0a8"/>
+            <stop offset="50%" stop-color="#5a5a62"/>
+            <stop offset="65%" stop-color="#8a0505"/>
+            <stop offset="85%" stop-color="#c81010"/>
+            <stop offset="100%" stop-color="#3a0202"/>
+          </linearGradient>
+
+          <linearGradient id="cHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+            <stop offset="40%" stop-color="#ffffff" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.4"/>
+          </linearGradient>
+
+          <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ff2b2b" stop-opacity="0.55"/>
+            <stop offset="60%" stop-color="#c81010" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#c81010" stop-opacity="0"/>
+          </radialGradient>
+
+          <linearGradient id="bevelEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff8080"/>
+            <stop offset="50%" stop-color="#5a0303"/>
+            <stop offset="100%" stop-color="#1a0202"/>
+          </linearGradient>
+
+          <filter id="logoShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+            <feOffset dx="0" dy="4" result="offsetblur"/>
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.6"/>
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <filter id="logoGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Background atmospheric glow -->
+        <circle cx="100" cy="100" r="95" fill="url(#glowGrad)"/>
+
+        <!-- Outer hexagon tactical frame -->
+        <path d="M100 8 L172 50 L172 150 L100 192 L28 150 L28 50 Z"
+              fill="none"
+              stroke="url(#ringGrad)"
+              stroke-width="1.5"
+              opacity="0.55"/>
+
+        <!-- Inner hexagon -->
+        <path d="M100 20 L160 55 L160 145 L100 180 L40 145 L40 55 Z"
+              fill="none"
+              stroke="url(#ringGrad)"
+              stroke-width="0.8"
+              opacity="0.35"/>
+
+        <!-- Main 3D C shape -->
+        <g filter="url(#logoShadow)">
+          <!-- Shadow layer (depth) -->
+          <path d="M132 42
+                   C 100 32, 62 48, 52 82
+                   C 42 116, 60 152, 96 162
+                   C 122 169, 148 158, 162 138
+                   L 142 122
+                   C 132 136, 116 144, 98 140
+                   C 76 135, 64 112, 70 90
+                   C 76 68, 98 58, 118 62
+                   C 128 64, 138 70, 144 78
+                   L 162 62
+                   C 154 50, 144 44, 132 42 Z"
+                fill="#1a0202"
+                transform="translate(2, 3)"/>
+
+          <!-- Base C metal -->
+          <path d="M132 42
+                   C 100 32, 62 48, 52 82
+                   C 42 116, 60 152, 96 162
+                   C 122 169, 148 158, 162 138
+                   L 142 122
+                   C 132 136, 116 144, 98 140
+                   C 76 135, 64 112, 70 90
+                   C 76 68, 98 58, 118 62
+                   C 128 64, 138 70, 144 78
+                   L 162 62
+                   C 154 50, 144 44, 132 42 Z"
+                fill="url(#cGrad)"/>
+
+          <!-- Bevel highlight -->
+          <path d="M132 42
+                   C 100 32, 62 48, 52 82
+                   C 46 104, 50 128, 62 144
+                   L 54 132
+                   C 44 112, 44 88, 54 70
+                   C 66 48, 94 36, 122 42
+                   Z"
+                fill="url(#cHighlight)"
+                opacity="0.85"/>
+
+          <!-- Edge accent -->
+          <path d="M132 42
+                   C 100 32, 62 48, 52 82
+                   C 42 116, 60 152, 96 162
+                   C 122 169, 148 158, 162 138
+                   L 142 122
+                   C 132 136, 116 144, 98 140
+                   C 76 135, 64 112, 70 90
+                   C 76 68, 98 58, 118 62
+                   C 128 64, 138 70, 144 78
+                   L 162 62
+                   C 154 50, 144 44, 132 42 Z"
+                fill="none"
+                stroke="url(#bevelEdge)"
+                stroke-width="1.2"
+                opacity="0.9"/>
+        </g>
+
+        <!-- Crimson glow center -->
+        <circle cx="102" cy="102" r="5" fill="#ff2b2b" opacity="0.6" filter="url(#logoGlow)"/>
+      </svg>
+    </div>
+
+    <h1 class="reveal"><span>CERBERUS</span></h1>
+
+    <p class="hero-tagline reveal">Security &amp; Protection Organization</p>
+
+    <div class="hero-divider reveal" aria-hidden="true"></div>
+
+    <div class="director-block reveal">
+      <span class="director-label">Director</span>
+      <span class="director-name">TRUE ALPHA</span>
+    </div>
+
+    <div class="credits-block reveal">
+      <span class="credits-label">Handbook Created By</span>
+      <span class="credits-names">
+        AMIR VORTEX <span class="sep">·</span> AMIR KHAN
+      </span>
+    </div>
+
+    <p class="hero-desc reveal">
+      سازمان <strong style="color:#fff">CERBERUS</strong> یک سازمان حفاظتی و امنیتی است که با هدف تأمین امنیت مناطق تعیین‌شده،
+      NCZها، Safe Zoneها و اماکن تحت پوشش فعالیت می‌کند.
+    </p>
+
+    <div class="hero-actions reveal">
+      <a href="#handbook" class="btn btn-primary">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        View Handbook
+      </a>
+      <a href="#radio" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24">
+          <path d="M4.9 19.1a10 10 0 0 1 0-14.2"/>
+          <path d="M19.1 4.9a10 10 0 0 1 0 14.2"/>
+          <path d="M7.8 16.2a6 6 0 0 1 0-8.4"/>
+          <path d="M16.2 7.8a6 6 0 0 1 0 8.4"/>
+          <circle cx="12" cy="12" r="2"/>
+        </svg>
+        Radio Codes
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     HANDBOOK
+     ============================================================ -->
+<section class="section" id="handbook">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Official Handbook</span>
+      <h2 class="sec-title">مقررات و قوانین <em>CERBERUS</em></h2>
+      <p class="sec-desc">
+        تمامی مواد قانونی سازمان به‌صورت کامل و بدون حذف محتوا در ادامه آمده است.
+        هر عضو موظف است پیش از شروع فعالیت، تمامی مواد را مطالعه و رعایت نماید.
+      </p>
+    </div>
+
+    <div class="accordion" id="accordion">
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">01</span>
+          <span class="acc-title">موضوع و هدف سازمان</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>
+              سازمان <span class="hl">Cerberus</span> یک سازمان حفاظتی و امنیتی است که وظیفه اصلی آن تأمین امنیت
+              <span class="hl">NCZها</span>، مناطق امن <span class="hl">(Safe Zone)</span> و سایر مکان‌های تعیین‌شده توسط مدیریت می‌باشد.
+              اعضای سازمان موظف‌اند در صورت وقوع هرگونه حادثه یا مشکل امنیتی، موضوع را پیگیری و در چارچوب قوانین گزارش کنند.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">02</span>
+          <span class="acc-title">وظایف اعضای Cerberus</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ol class="acc-list">
+              <li>حفاظت از NCZها و مناطق امن تعیین‌شده.</li>
+              <li>حضور در محل‌های تحت پوشش و تأمین امنیت آن‌ها.</li>
+              <li>پیگیری حوادث و اتفاقات امنیتی در محدوده مأموریت.</li>
+              <li>گزارش اتفاقات مهم به مسئول مربوطه.</li>
+              <li>اجرای دستورات مافوق در چارچوب قوانین.</li>
+              <li>رعایت رفتار حرفه‌ای در زمان انجام وظیفه.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">03</span>
+          <span class="acc-title">همکاری با ارگان‌ها</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ol class="acc-list">
+              <li>سازمان Cerberus با تمامی ارگان‌های رسمی و شریف همکاری کامل دارد.</li>
+              <li>همکاری با ارگان‌هایی از جمله <span class="hl">Police</span> و <span class="hl">FBI</span> در چارچوب قوانین انجام می‌شود.</li>
+              <li>اعضا موظف‌اند در مأموریت‌های مشترک با سایر ارگان‌ها همکاری لازم را داشته باشند.</li>
+              <li>هیچ عضوی حق ایجاد درگیری یا تنش غیرضروری با ارگان‌های همکار را ندارد.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">04</span>
+          <span class="acc-title">خدمات حفاظتی کافه‌ها</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ol class="acc-list">
+              <li>سازمان Cerberus امکان تأمین نیروی محافظ برای کافه‌ها و اماکن تجاری را دارد.</li>
+              <li>محافظ موظف است در محل تعیین‌شده مستقر شده و امنیت آن مکان را تأمین کند.</li>
+              <li>هزینه خدمات حفاظتی <span class="hl">به ازای هر ۳۰ دقیقه حضور محافظ، 250,000 IC</span> می‌باشد.</li>
+              <li>در صورت ادامه مأموریت، هزینه بر اساس هر بازه ۳۰ دقیقه‌ای محاسبه خواهد شد.</li>
+              <li>محافظ موظف است تا پایان زمان تعیین‌شده در محل حضور داشته باشد، مگر با هماهنگی مسئول مربوطه.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">05</span>
+          <span class="acc-title">قوانین رفتاری اعضا</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ol class="acc-list">
+              <li>رعایت کامل قوانین و قوانین داخلی Cerberus الزامی است.</li>
+              <li>احترام به شهروندان، اعضای سازمان و سایر ارگان‌ها الزامی است.</li>
+              <li>سوءاستفاده از رنک، مقام، تجهیزات یا امکانات سازمان ممنوع است.</li>
+              <li>ایجاد درگیری، بی‌نظمی یا استفاده نادرست از اختیارات سازمانی ممنوع می‌باشد.</li>
+              <li>اطلاعات و امور داخلی سازمان نباید بدون اجازه مدیریت منتشر شود.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">06</span>
+          <span class="acc-title">فعالیت و حضور</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ol class="acc-list">
+              <li>تمامی اعضا موظف به فعالیت و حضور منظم در سازمان هستند.</li>
+              <li>عدم فعالیت طولانی‌مدت بدون هماهنگی با مسئول مربوطه می‌تواند تخلف محسوب شود.</li>
+              <li>اعضا باید در زمان فعالیت سازمانی آماده انجام مأموریت‌های محوله باشند.</li>
+              <li>ترک محل مأموریت بدون هماهنگی می‌تواند موجب برخورد انضباطی شود.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">07</span>
+          <span class="acc-title">رنک‌اپ هفتگی</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ol class="acc-list">
+              <li><span class="hl">هر جمعه رنک‌اپ سازمان Cerberus برگزار می‌شود.</span></li>
+              <li>فعالیت، حضور، نظم، عملکرد و نحوه انجام مأموریت‌های اعضا بررسی خواهد شد.</li>
+              <li>همکاری با سایر ارگان‌ها و میزان مسئولیت‌پذیری اعضا نیز در رنک‌اپ لحاظ می‌شود.</li>
+              <li>نتیجه رنک‌اپ می‌تواند شامل <span class="hl">ارتقای رنک، ثابت ماندن رنک، تنزل رنک یا اخطار</span> باشد.</li>
+              <li>تصمیم نهایی رنک‌اپ بر عهده مدیریت سازمان می‌باشد.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">08</span>
+          <span class="acc-title">تخلفات و برخورد انضباطی</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>در صورت تخلف از قوانین، مدیریت سازمان با توجه به شدت تخلف می‌تواند اقدامات زیر را انجام دهد:</p>
+            <div class="chip-row">
+              <span class="chip">اخطار</span>
+              <span class="chip">جریمه</span>
+              <span class="chip">تنزل رنک</span>
+              <span class="chip">تعلیق فعالیت</span>
+              <span class="chip">اخراج از سازمان</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">09</span>
+          <span class="acc-title">دستورات مدیریت</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>
+              تمامی اعضای سازمان موظف به رعایت دستورات <span class="hl">Chief</span> و
+              <span class="hl">مسئولین بالاتر</span> هستند، مشروط بر اینکه دستورات در چارچوب قوانین و مقررات سازمان باشد.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">10</span>
+          <span class="acc-title">پذیرش قوانین</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>
+              هر فرد پس از استخدام در سازمان Cerberus، با ادامه فعالیت خود در سازمان،
+              <span class="hl">کلیه قوانین و مقررات فوق را پذیرفته و موظف به رعایت آن‌ها می‌باشد.</span>
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DUTIES
+     ============================================================ -->
+<section class="section" id="duties">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Operational Duties</span>
+      <h2 class="sec-title">وظایف <em>Officer</em> های سازمان</h2>
+      <p class="sec-desc">
+        هر Officer در سازمان CERBERUS مسئول اجرای دقیق وظایف محوله در چارچوب قوانین و مقررات سازمان است.
+      </p>
+    </div>
+
+    <div class="grid grid-3">
+
+      <div class="card reveal">
+        <span class="card-idx">01</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+        </div>
+        <h3>حفاظت از NCZ و مناطق امن</h3>
+        <p>تأمین امنیت NCZها، Safe Zoneها و کلیه مناطق تعیین‌شده توسط مدیریت.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-idx">02</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.4-9 9-9 9z"/></svg>
+        </div>
+        <h3>حضور در محل‌های تحت پوشش</h3>
+        <p>استقرار در اماکن تحت پوشش و تأمین امنیت آن‌ها در بازه‌های تعیین‌شده.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-idx">03</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <h3>پیگیری حوادث امنیتی</h3>
+        <p>بررسی و پیگیری حوادث و اتفاقات امنیتی در محدوده مأموریت.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-idx">04</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3V4z"/></svg>
+        </div>
+        <h3>گزارش‌دهی</h3>
+        <p>گزارش اتفاقات مهم و موارد امنیتی به مسئول مربوطه در سریع‌ترین زمان.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-idx">05</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <h3>اجرای دستورات مافوق</h3>
+        <p>اجرای دستورات مافوق در چارچوب قوانین و مقررات سازمان.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="card-idx">06</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 5.6L20 9.2l-4 4.2.9 6-4.9-2.8L7.1 19.4l.9-6-4-4.2 5.6-1.6L12 2z"/></svg>
+        </div>
+        <h3>رفتار حرفه‌ای</h3>
+        <p>رعایت کامل رفتار حرفه‌ای و انضباط سازمانی در زمان انجام وظیفه.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section class="section" id="services">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Protection Services</span>
+      <h2 class="sec-title">خدمات <em>حفاظتی</em> سازمان</h2>
+      <p class="sec-desc">
+        سازمان CERBERUS امکان تأمین نیروی محافظ حرفه‌ای برای کافه‌ها و اماکن تجاری را فراهم می‌کند.
+      </p>
+    </div>
+
+    <div class="price-wrap reveal">
+      <div class="price-card">
+
+        <span class="price-tag">Service Contract</span>
+
+        <h3 class="price-title">Security Protection</h3>
+
+        <p class="price-value">
+          250,000 <small>IC &nbsp;/&nbsp; PER 30 MINUTES</small>
+        </p>
+
+        <p class="price-note">
+          هزینه خدمات حفاظتی به ازای هر ۳۰ دقیقه حضور محافظ محاسبه می‌شود.
+        </p>
+
+        <ul class="price-features">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+            استقرار محافظ در محل تعیین‌شده
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+            تأمین امنیت کامل مکان در بازه مأموریت
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+            محاسبه هزینه بر اساس هر بازه ۳۰ دقیقه‌ای
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+            حضور محافظ تا پایان زمان تعیین‌شده
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WEEKLY RANK REVIEW
+     ============================================================ -->
+<section class="section" id="rank">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Evaluation System</span>
+      <h2 class="sec-title">Weekly <em>Rank Review</em></h2>
+      <p class="sec-desc">
+        ارزیابی هفتگی عملکرد، نظم و مسئولیت‌پذیری Officer های سازمان CERBERUS.
+      </p>
+    </div>
+
+    <div class="rank-banner reveal">
+      <svg viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <path d="M16 2v4M8 2v4M3 10h18"/>
+        <path d="M9 16l2 2 4-4"/>
+      </svg>
+      <p>هر جمعه رنک‌اپ سازمان Cerberus برگزار می‌شود.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <span class="card-idx">01</span>
+        <h3>Activity</h3>
+        <p>میزان فعالیت کلی Officer در طول هفته.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-idx">02</span>
+        <h3>Attendance</h3>
+        <p>حضور منظم و به‌موقع در شیفت‌ها و مأموریت‌ها.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-idx">03</span>
+        <h3>Discipline</h3>
+        <p>رعایت انضباط سازمانی و قوانین داخلی.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-idx">04</span>
+        <h3>Performance</h3>
+        <p>کیفیت و دقت عملکرد در انجام وظایف روزانه.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-idx">05</span>
+        <h3>Mission Performance</h3>
+        <p>نحوه انجام و مدیریت مأموریت‌های محوله.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-idx">06</span>
+        <h3>Cooperation</h3>
+        <p>همکاری با سایر ارگان‌ها و اعضای سازمان.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-idx">07</span>
+        <h3>Responsibility</h3>
+        <p>میزان مسئولیت‌پذیری و تعهد سازمانی.</p>
+      </div>
+    </div>
+
+    <div class="result-badges reveal">
+      <span class="result-badge promote">▲ PROMOTION — ارتقای رنک</span>
+      <span class="result-badge stable">● NO CHANGE — ثابت ماندن رنک</span>
+      <span class="result-badge demote">▼ DEMOTION — تنزل رنک</span>
+      <span class="result-badge warn">! WARNING — اخطار</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     DISCIPLINE
+     ============================================================ -->
+<section class="section" id="discipline">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Enforcement</span>
+      <h2 class="sec-title">تخلفات و <em>برخورد انضباطی</em></h2>
+      <p class="sec-desc">
+        در صورت تخلف از قوانین، مدیریت سازمان با توجه به شدت تخلف اقدامات زیر را انجام می‌دهد.
+      </p>
+    </div>
+
+    <div class="discipline reveal">
+      <div class="disc-grid">
+        <div class="disc-item">
+          <div class="disc-code">WARNING</div>
+          <div class="disc-fa">اخطار</div>
+          <div class="bar"></div>
+        </div>
+        <div class="disc-item">
+          <div class="disc-code">FINE</div>
+          <div class="disc-fa">جریمه</div>
+          <div class="bar"></div>
+        </div>
+        <div class="disc-item">
+          <div class="disc-code">DEMOTION</div>
+          <div class="disc-fa">تنزل رنک</div>
+          <div class="bar"></div>
+        </div>
+        <div class="disc-item">
+          <div class="disc-code">SUSPENSION</div>
+          <div class="disc-fa">تعلیق فعالیت</div>
+          <div class="bar"></div>
+        </div>
+        <div class="disc-item">
+          <div class="disc-code">DISMISSAL</div>
+          <div class="disc-fa">اخراج از سازمان</div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     RADIO CODES
+     ============================================================ -->
+<section class="section" id="radio">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Communication</span>
+      <h2 class="sec-title">CERBERUS <em>RADIO PROTOCOL</em></h2>
+      <p class="sec-desc">
+        پروتکل کامل کدهای رادیویی سازمان. برای جستجو، کد یا معنی فارسی آن را وارد کنید.
+      </p>
+    </div>
+
+    <div class="radio-top reveal">
+      <div class="radio-title">
+        <span class="live"></span>
+        CERBERUS RADIO PROTOCOL
+      </div>
+      <div class="search-box">
+        <input type="search" id="radioSearch" placeholder="جستجوی کد یا معنی... مثلاً 10-43 یا تیراندازی" autocomplete="off" aria-label="جستجوی کد رادیویی">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="M21 21l-4.3-4.3"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="radio-meta reveal">
+      <span>Total Codes: <strong id="codeCount">0</strong></span>
+      <span>Status: <strong>ACTIVE</strong></span>
+    </div>
+
+    <div class="codes-grid" id="codesGrid"></div>
+
+    <div class="no-result" id="noResult">
+      <strong>NO RESULT FOUND</strong>
+      کدی با این عبارت یافت نشد. لطفاً عبارت دیگری را جستجو کنید.
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     ACCEPTANCE
+     ============================================================ -->
+<section class="section" id="acceptance">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Final Agreement</span>
+      <h2 class="sec-title">پذیرش <em>قوانین</em></h2>
+    </div>
+
+    <div class="accept-box reveal">
+      <div class="seal">
+        <!-- 3D SEAL LOGO -->
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="sealCGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="30%" stop-color="#c8c8d0"/>
+              <stop offset="55%" stop-color="#7a7a82"/>
+              <stop offset="75%" stop-color="#c81010"/>
+              <stop offset="100%" stop-color="#3a0202"/>
+            </linearGradient>
+            <filter id="sealShadow">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+              <feOffset dx="1" dy="2"/>
+              <feComponentTransfer><feFuncA type="linear" slope="0.7"/></feComponentTransfer>
+              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#sealShadow)">
+            <path d="M72 30
+                     C 54 20, 32 28, 26 50
+                     C 20 72, 32 92, 55 95
+                     C 72 97, 85 88, 90 75
+                     L 76 68
+                     C 72 78, 64 84, 54 83
+                     C 40 82, 34 68, 38 56
+                     C 42 42, 56 38, 68 42
+                     L 72 30 Z"
+                  fill="url(#sealCGrad)"/>
+          </g>
+        </svg>
+      </div>
+
+      <p>
+        هر فرد پس از استخدام در سازمان Cerberus، با ادامه فعالیت خود در سازمان،
+        <strong style="color:#fff">کلیه قوانین و مقررات فوق را پذیرفته و موظف به رعایت آن‌ها می‌باشد.</strong>
+      </p>
+
+      <div class="accept-sign">
+        <span>Director: <b>TRUE ALPHA</b></span>
+        <span>Organization: <b>CERBERUS</b></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="wrap">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <h4>CERBERUS</h4>
+        <p>Security &amp; Protection Organization</p>
+        <p>Director: <strong>TRUE ALPHA</strong></p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#handbook">Handbook</a></li>
+          <li><a href="#duties">Duties</a></li>
+          <li><a href="#services">Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Organization</h5>
+        <ul>
+          <li><a href="#rank">Rank Review</a></li>
+          <li><a href="#discipline">Discipline</a></li>
+          <li><a href="#radio">Radio Codes</a></li>
+          <li><a href="#acceptance">Acceptance</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>CERBERUS © All Rights Reserved</span>
+      <span class="status"><i></i> SYSTEM ACTIVE</span>
+    </div>
+
+    <div class="dev-credit">
+      Website Designed &amp; Developed by <b>POURIA VINIC</b>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CERBERUS — HANDBOOK SCRIPT
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* ---------- SCROLL PROGRESS ---------- */
+  var progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrollTop = h.scrollTop || document.body.scrollTop;
+    var scrollHeight = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+    var pct = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
+    progressBar.style.transform = 'scaleX(' + pct + ')';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  /* ---------- NAV: scroll state ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- NAV: mobile menu ---------- */
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---------- NAV: active link on scroll ---------- */
+  var sections = document.querySelectorAll('main section[id]');
+  var navAnchors = links.querySelectorAll('a');
+
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        navAnchors.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(function (s) { spy.observe(s); });
+
+  /* ---------- ACCORDION ---------- */
+  var accItems = document.querySelectorAll('.acc-item');
+
+  accItems.forEach(function (item) {
+    var head = item.querySelector('.acc-head');
+    var body = item.querySelector('.acc-body');
+
+    head.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+
+      accItems.forEach(function (other) {
+        other.classList.remove('open');
+        other.querySelector('.acc-body').style.maxHeight = null;
+        other.querySelector('.acc-head').setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        head.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  window.addEventListener('resize', function () {
+    var open = document.querySelector('.acc-item.open .acc-body');
+    if (open) open.style.maxHeight = open.scrollHeight + 'px';
+  });
+
+  /* ---------- RADIO CODES DATA ---------- */
+  var RADIO_CODES = [
+    { code: '10-1',  en: 'All Units Respond',            fa: 'اجتماع تمامی نیروها در مکان مشخص‌شده' },
+    { code: '10-2',  en: 'Mandatory Silence On Scene',   fa: 'سکوت اجباری در محل' },
+    { code: '10-3',  en: 'Radio Silence',                fa: 'سکوت در رادیو' },
+    { code: '10-4',  en: 'Acknowledged',                 fa: 'دریافت شد' },
+    { code: '10-5',  en: 'Repeat Last Message',          fa: 'پیام قبلی را تکرار کنید' },
+    { code: '10-6',  en: 'Disregard Last Message',       fa: 'آخرین پیام را نادیده بگیرید' },
+    { code: '10-7 (AFK)', en: 'Out Of Service',          fa: 'خارج از دسترس موقت' },
+    { code: '10-8',  en: 'Available For Duty',           fa: 'آماده‌ی انجام کار' },
+    { code: '10-9',  en: 'Busy',                         fa: 'مشغول هستم' },
+    { code: '10-10', en: 'Operation Successful',         fa: 'موفقیت در عملیات' },
+    { code: '10-11', en: 'Operation Failed',             fa: 'ناموفق‌بودن عملیات' },
+    { code: '10-12', en: 'Pick-Up Officer',              fa: 'Pick-Up Officer' },
+    { code: '10-13', en: 'Pick-Up Suspect',              fa: 'Pick-Up Suspect' },
+    { code: '10-14', en: 'Hostage Situation',            fa: 'Hostage Situation' },
+    { code: '10-15', en: 'Suspect In Custody',           fa: 'مجرم در بند' },
+    { code: '10-17', en: 'Murder',                       fa: 'Murder / قتل' },
+    { code: '10-18', en: 'Gang Activity',                fa: 'Gang Activity (اکتیویتی کوچک‌تر از کد بنفش)' },
+    { code: '10-19', en: 'Return To Department',         fa: 'بازگشت به اداره' },
+    { code: '10-20', en: 'Report Exact Location',        fa: 'اعلام موقعیت مکانی دقیق' },
+    { code: '10-21', en: 'Report Exact Status',          fa: 'اعلام وضعیت دقیق' },
+    { code: '10-23', en: 'Stand By',                     fa: 'منتظر بمانید' },
+    { code: '10-35', en: 'Suspect Deceased Before Medic Arrival', fa: 'مجرم پیش از رسیدن مدیک فوت شد' },
+    { code: '10-37', en: 'Identify (Name, Badge, Callsign, Department)', fa: 'اعلام هویت (اسم، بج‌نامبر، کال‌ساین، اداره)' },
+    { code: '10-42', en: 'Request Off-Duty',             fa: 'درخواست آف‌دیوتی' },
+    { code: '10-43', en: 'Shots Fired',                  fa: 'تیراندازی' },
+    { code: '10-44', en: 'Request Radio Off (Valid Reason)', fa: 'درخواست خاموش‌کردن رادیو با دلیل موجه' },
+    { code: '10-45', en: 'Change Radio Frequency',       fa: 'تغییر فرکانس رادیو' },
+    { code: '10-55 (M/T/H/N/S/O/R)', en: 'Traffic Stop',  fa: 'در حال ایست ترافیکی (موتور/کامیون/سرعت بالا/متوسط/کم/آفرود/پرخطر)' },
+    { code: '10-66', en: 'In Pursuit',                   fa: 'در حال تعقیب (پرسوت)' },
+    { code: '10-70', en: 'Request Backup',               fa: 'درخواست نیروی پشتیبانی' },
+    { code: '10-82', en: 'Request Plate Check',          fa: 'درخواست چک‌کردن پلاک خودرو' },
+    { code: '10-83', en: 'Request PIT Maneuver',         fa: 'درخواست اجرای PIT' },
+    { code: '10-97', en: 'Responding To Location',       fa: 'اعزام به موقعیت' },
+    { code: '10-99', en: 'Mission Completed',            fa: 'ماموریت خاتمه یافت' },
+    { code: 'Patrol-10-11', en: 'Patrol Car Crashed',    fa: 'ماشین پاترول کرش کرد' },
+    { code: '11-11', en: 'Suspicious Person',            fa: 'فرد مشکوک' },
+    { code: 'Lost Visual', en: 'Suspect Escaped',        fa: 'مجرم متواری / ناپدید شد' },
+    { code: 'ETA',   en: 'Estimated Time Of Arrival',    fa: 'زمان تقریبی رسیدن به موقعیت' },
+    { code: 'Foot On Pursuit', en: 'Foot Pursuit',       fa: 'تعقیب‌وگریز پیاده' },
+    { code: 'Down Officer/Suspect', en: 'Officer Or Suspect Down', fa: 'Officer یا متهم زخمی و مجروح شده' }
+  ];
+
+  /* ---------- RENDER ---------- */
+  var grid = document.getElementById('codesGrid');
+  var noResult = document.getElementById('noResult');
+  var codeCount = document.getElementById('codeCount');
+  var search = document.getElementById('radioSearch');
+
+  var PER_DIGIT = { '۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9',
+                    '٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9' };
+
+  function normalize(str) {
+    return String(str)
+      .replace(/[۰-۹٠-٩]/g, function (d) { return PER_DIGIT[d] || d; })
+      .toLowerCase()
+      .trim();
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function render(list) {
+    if (!list.length) {
+      grid.innerHTML = '';
+      noResult.classList.add('show');
+      codeCount.textContent = '0';
+      return;
+    }
+    noResult.classList.remove('show');
+    codeCount.textContent = String(list.length);
+
+    var html = '';
+    for (var i = 0; i < list.length; i++) {
+      var c = list[i];
+      html +=
+        '<article class="code-card" style="animation-delay:' + Math.min(i * 16, 400) + 'ms">' +
+          '<span class="code-badge">CODE</span>' +
+          '<div class="code-num">' + escapeHtml(c.code) + '</div>' +
+          '<div class="code-en">' + escapeHtml(c.en) + '</div>' +
+          '<div class="code-fa">' + escapeHtml(c.fa) + '</div>' +
+        '</article>';
+    }
+    grid.innerHTML = html;
+  }
+
+  /* ---------- SEARCH ---------- */
+  var rafId = null;
+  search.addEventListener('input', function () {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(function () {
+      var q = normalize(search.value);
+      if (!q) { render(RADIO_CODES); return; }
+
+      var filtered = RADIO_CODES.filter(function (c) {
+        return normalize(c.code).indexOf(q) !== -1 ||
+               normalize(c.en).indexOf(q) !== -1 ||
+               normalize(c.fa).indexOf(q) !== -1;
+      });
+      render(filtered);
+    });
+  });
+
+  render(RADIO_CODES);
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function (el) { ro.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+})();
+</script>
+
+</body>
+</html>
