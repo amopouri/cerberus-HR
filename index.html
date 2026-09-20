@@ -455,9 +455,9 @@ input{font-family:inherit;}
 .credits-block{
   display:inline-flex;
   flex-direction:column;align-items:center;
-  gap:8px;
-  padding:16px 34px;
-  border-radius:999px;
+  gap:12px;
+  padding:20px 40px;
+  border-radius:var(--radius);
   border:1px solid var(--line-2);
   background:rgba(255,255,255,.02);
   backdrop-filter:blur(10px);
@@ -475,6 +475,13 @@ input{font-family:inherit;}
   font-weight:800;
   letter-spacing:.22em;
   color:#fff;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px 0;
+}
+.credits-names .name{
+  white-space:nowrap;
 }
 .credits-names .sep{
   color:var(--crimson-2);
@@ -1450,8 +1457,8 @@ input{font-family:inherit;}
   .hero-logo-wrap{width:110px;height:110px;margin-bottom:14px;}
   .hero-tagline{letter-spacing:.26em;line-height:2;}
   .director-block{padding:20px 28px;width:100%;max-width:440px;}
-  .credits-block{padding:14px 24px;max-width:100%;}
-  .credits-names{letter-spacing:.14em;}
+  .credits-block{padding:16px 24px;max-width:100%;}
+  .credits-names{letter-spacing:.12em;font-size:.78rem;gap:4px 0;}
   .credits-names .sep{margin:0 8px;}
 
   .hero-actions{flex-direction:column;width:100%;}
@@ -1506,7 +1513,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   <div class="nav-inner">
     <a href="#home" class="brand" aria-label="CERBERUS — Home">
       <span class="brand-mark" aria-hidden="true">
-        <!-- ============ 3D BRAND LOGO (C) ============ -->
         <svg viewBox="0 0 100 100">
           <defs>
             <linearGradient id="bmCGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1529,7 +1535,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
             </filter>
           </defs>
           <g filter="url(#bmShadow)">
-            <!-- Shadow offset -->
             <path d="M72 30
                      C 54 20, 32 28, 26 50
                      C 20 72, 32 92, 55 95
@@ -1541,7 +1546,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
                      L 72 30 Z"
                   fill="#1a0202"
                   transform="translate(1.5, 2)"/>
-            <!-- Main C -->
             <path d="M72 30
                      C 54 20, 32 28, 26 50
                      C 20 72, 32 92, 55 95
@@ -1552,7 +1556,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
                      C 42 42, 56 38, 68 42
                      L 72 30 Z"
                   fill="url(#bmCGrad)"/>
-            <!-- Highlight -->
             <path d="M72 30
                      C 54 20, 32 28, 26 50
                      C 22 66, 26 82, 36 90
@@ -1604,7 +1607,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
       Official Organization Handbook
     </div>
 
-    <!-- ============ 3D HERO LOGO (C) ============ -->
     <div class="hero-logo-wrap reveal" aria-hidden="true">
       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -1665,26 +1667,21 @@ a:focus-visible,button:focus-visible,input:focus-visible{
           </filter>
         </defs>
 
-        <!-- Background atmospheric glow -->
         <circle cx="100" cy="100" r="95" fill="url(#glowGrad)"/>
 
-        <!-- Outer hexagon tactical frame -->
         <path d="M100 8 L172 50 L172 150 L100 192 L28 150 L28 50 Z"
               fill="none"
               stroke="url(#ringGrad)"
               stroke-width="1.5"
               opacity="0.55"/>
 
-        <!-- Inner hexagon -->
         <path d="M100 20 L160 55 L160 145 L100 180 L40 145 L40 55 Z"
               fill="none"
               stroke="url(#ringGrad)"
               stroke-width="0.8"
               opacity="0.35"/>
 
-        <!-- Main 3D C shape -->
         <g filter="url(#logoShadow)">
-          <!-- Shadow layer (depth) -->
           <path d="M132 42
                    C 100 32, 62 48, 52 82
                    C 42 116, 60 152, 96 162
@@ -1699,7 +1696,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
                 fill="#1a0202"
                 transform="translate(2, 3)"/>
 
-          <!-- Base C metal -->
           <path d="M132 42
                    C 100 32, 62 48, 52 82
                    C 42 116, 60 152, 96 162
@@ -1713,7 +1709,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
                    C 154 50, 144 44, 132 42 Z"
                 fill="url(#cGrad)"/>
 
-          <!-- Bevel highlight -->
           <path d="M132 42
                    C 100 32, 62 48, 52 82
                    C 46 104, 50 128, 62 144
@@ -1724,7 +1719,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
                 fill="url(#cHighlight)"
                 opacity="0.85"/>
 
-          <!-- Edge accent -->
           <path d="M132 42
                    C 100 32, 62 48, 52 82
                    C 42 116, 60 152, 96 162
@@ -1742,7 +1736,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
                 opacity="0.9"/>
         </g>
 
-        <!-- Crimson glow center -->
         <circle cx="102" cy="102" r="5" fill="#ff2b2b" opacity="0.6" filter="url(#logoGlow)"/>
       </svg>
     </div>
@@ -1761,7 +1754,13 @@ a:focus-visible,button:focus-visible,input:focus-visible{
     <div class="credits-block reveal">
       <span class="credits-label">Handbook Created By</span>
       <span class="credits-names">
-        AMIR VORTEX <span class="sep">·</span> AMIR KHAN
+        <span class="name">AMIR VORTEX</span>
+        <span class="sep">·</span>
+        <span class="name">AMIR KHAN</span>
+        <span class="sep">·</span>
+        <span class="name">HESAM PARSA</span>
+        <span class="sep">·</span>
+        <span class="name">MAMAD SANI</span>
       </span>
     </div>
 
@@ -2012,6 +2011,230 @@ a:focus-visible,button:focus-visible,input:focus-visible{
         </div>
       </article>
 
+      <!-- ==================================================
+           NEW ARTICLES (from updated handbook)
+           ================================================== -->
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">11</span>
+          <span class="acc-title">On Duty / Off Duty</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p><span class="hl">هنگام On Duty اعضا باید:</span></p>
+            <ol class="acc-list">
+              <li>آماده انجام مأموریت باشند.</li>
+              <li>وظایف سازمانی را انجام دهند.</li>
+              <li>در محل مأموریت حضور داشته باشند.</li>
+              <li>از امکانات سازمانی به‌درستی استفاده کنند.</li>
+            </ol>
+            <p style="margin-top:16px;"><span class="hl">:black_circle: Off Duty</span></p>
+            <p>برای انجام کارهای شخصی یا فعالیت‌های خارج از وظایف سازمان:</p>
+            <ol class="acc-list">
+              <li>ابتدا Off Duty کنید.</li>
+              <li>پس از پایان کار شخصی، مجدداً به سازمان برگشته و On Duty شوید.</li>
+            </ol>
+            <p style="margin-top:16px;">
+              <span class="hl">:warning: انجام فعالیت شخصی در حالت Duty بدون هماهنگی تخلف محسوب می‌شود و روی رنکاپ تأثیر منفی دارد.</span>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">14</span>
+          <span class="acc-title">ماده ۱۴ — قانون گنگ</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>اعضای <span class="hl">CERBERUS</span> فقط می‌توانند:</p>
+            <ol class="acc-list">
+              <li>:white_check_mark: عضو گنگ <span class="hl">Military</span> باشند</li>
+              <li>:white_check_mark: اصلاً عضو هیچ گنگی نباشند.</li>
+            </ol>
+            <p style="margin-top:16px;"><span class="hl">:x: عضویت در هر گنگ دیگری ممنوع است.</span></p>
+            <p>در صورت مشخص شدن عضویت فرد در گنگی غیر از Military، اخراج فرد از سازمان می‌تواند از همان ابتدا انجام شود.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">15</span>
+          <span class="acc-title">ماده ۱۵ — قوانین رفتاری</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ol class="acc-list">
+              <li>رعایت قوانین سرور الزامی است.</li>
+              <li>رعایت قوانین داخلی CERBERUS الزامی است.</li>
+              <li>احترام به شهروندان الزامی است.</li>
+              <li>احترام به اعضای سازمان الزامی است.</li>
+              <li>احترام به سایر ارگان‌ها الزامی است.</li>
+              <li>سوءاستفاده از رنک و مقام ممنوع است.</li>
+              <li>سوءاستفاده از تجهیزات و امکانات سازمان ممنوع است.</li>
+              <li>ایجاد درگیری و بی‌نظمی غیرضروری ممنوع است.</li>
+              <li>استفاده نادرست از اختیارات سازمانی ممنوع است.</li>
+              <li>انتشار اطلاعات داخلی بدون اجازه مدیریت ممنوع است.</li>
+              <li>ترک محل مأموریت بدون هماهنگی ممنوع است.</li>
+              <li>تمامی اعضا باید رفتار حرفه‌ای داشته باشند.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">16</span>
+          <span class="acc-title">ماده ۱۶ — فعالیت و حضور</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>تمامی اعضا موظف به فعالیت منظم در سازمان هستند.</p>
+            <ol class="acc-list">
+              <li>حضور و فعالیت اعضا در طول هفته بررسی می‌شود.</li>
+              <li>عدم فعالیت طولانی‌مدت بدون هماهنگی می‌تواند تخلف محسوب شود.</li>
+              <li>اعضا باید هنگام Duty آماده انجام مأموریت باشند.</li>
+              <li>انجام ندادن وظایف می‌تواند باعث کاهش امتیاز شود.</li>
+              <li>ترک مأموریت بدون هماهنگی تخلف محسوب می‌شود.</li>
+              <li>فعالیت صحیح و مستمر باعث افزایش امتیاز رنکاپ خواهد شد.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">17</span>
+          <span class="acc-title">ماده ۱۷ — رنکاپ هفتگی</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p><span class="hl">:date: رنکاپ: هر جمعه ساعت ۸ شب</span></p>
+            <p>تمام فعالیت‌های اعضا تا زمان رنکاپ بررسی می‌شود.</p>
+            <p style="margin-top:12px;"><span class="hl">موارد مؤثر:</span></p>
+            <ol class="acc-list">
+              <li>:alarm_clock: حضور و فعالیت</li>
+              <li>🛡 فعالیت‌های امنیتی</li>
+              <li>:bust_in_silhouette: فعالیت‌های بادیگاردی</li>
+              <li>:oncoming_police_car: نحوه بازداشت</li>
+              <li>:performing_arts: کیفیت RP</li>
+              <li>🤝 همکاری با ارگان‌ها</li>
+              <li>:clipboard: رعایت قوانین</li>
+              <li>🎖 مسئولیت‌پذیری</li>
+              <li>:cop: نحوه انجام مأموریت‌ها</li>
+              <li>:arrows_counterclockwise: رعایت Duty و Off Duty</li>
+              <li>:speech_balloon: رفتار با شهروندان و ارگان‌ها</li>
+            </ol>
+            <p style="margin-top:16px;"><span class="hl">نتیجه رنکاپ:</span></p>
+            <div class="chip-row">
+              <span class="chip">:arrow_up: ارتقای رنک</span>
+              <span class="chip">:heavy_minus_sign: ثابت ماندن رنک</span>
+              <span class="chip">:arrow_down: تنزل رنک</span>
+              <span class="chip">:warning: اخطار</span>
+            </div>
+            <p style="margin-top:12px;">تصمیم نهایی رنکاپ بر عهده مدیریت سازمان است.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">18</span>
+          <span class="acc-title">ماده ۱۸ — تخلفات و مجازات</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>در صورت تخلف، مدیریت با توجه به شدت آن می‌تواند اعمال کند:</p>
+            <div class="chip-row">
+              <span class="chip">:warning: اخطار</span>
+              <span class="chip">:moneybag: جریمه</span>
+              <span class="chip">:arrow_down: تنزل رنک</span>
+              <span class="chip">⏸ تعلیق فعالیت</span>
+              <span class="chip">:x: اخراج از سازمان</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">19</span>
+          <span class="acc-title">ماده ۱۹ — دستورات مدیریت</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>
+              تمامی اعضا موظف به رعایت دستورات <span class="hl">Chief</span> و مسئولین بالاتر هستند؛
+              مشروط بر اینکه دستورات در چارچوب قوانین سرور و مقررات سازمان باشند.
+            </p>
+            <p>هیچ عضوی موظف به اجرای دستوری که برخلاف قوانین سرور باشد نیست.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">20</span>
+          <span class="acc-title">ماده ۲۰ — پذیرش قوانین</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p>تمامی اعضا موظف‌اند قوانین CERBERUS را به‌طور کامل مطالعه و رعایت کنند.</p>
+            <p>ادعای «از قانون خبر نداشتم» دلیل قابل قبول برای عدم رعایت قوانین نیست.</p>
+            <p>ادامه فعالیت در سازمان به منزله پذیرش کامل قوانین و مقررات CERBERUS است.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="acc-item reveal">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">★</span>
+          <span class="acc-title">جمع‌بندی</span>
+          <span class="acc-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p style="text-align:center;font-weight:700;color:#fff;line-height:2.4;">
+              🛡 امنیت | نظم | RP صحیح | فعالیت | مسئولیت‌پذیری | احترام | همکاری
+            </p>
+            <p>این موارد پایه اصلی فعالیت در CERBERUS هستند.</p>
+            <p>
+              <span class="hl">:warning: تمامی اعضا موظف‌اند قوانین را مطالعه کرده و رعایت کنند.
+              در صورت عدم رعایت، فرد مسئول عواقب تخلف خود خواهد بود.</span>
+            </p>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -2166,7 +2389,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
         <path d="M16 2v4M8 2v4M3 10h18"/>
         <path d="M9 16l2 2 4-4"/>
       </svg>
-      <p>هر جمعه رنک‌اپ سازمان Cerberus برگزار می‌شود.</p>
+      <p>هر جمعه ساعت ۸ شب، رنک‌اپ سازمان Cerberus برگزار می‌شود.</p>
     </div>
 
     <div class="grid grid-3">
@@ -2204,6 +2427,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{
         <span class="card-idx">07</span>
         <h3>Responsibility</h3>
         <p>میزان مسئولیت‌پذیری و تعهد سازمانی.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-idx">08</span>
+        <h3>Duty / Off Duty</h3>
+        <p>رعایت صحیح وضعیت Duty و Off Duty در طول فعالیت.</p>
       </div>
     </div>
 
@@ -2320,7 +2548,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 
     <div class="accept-box reveal">
       <div class="seal">
-        <!-- 3D SEAL LOGO -->
         <svg viewBox="0 0 100 100">
           <defs>
             <linearGradient id="sealCGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2355,6 +2582,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
       <p>
         هر فرد پس از استخدام در سازمان Cerberus، با ادامه فعالیت خود در سازمان،
         <strong style="color:#fff">کلیه قوانین و مقررات فوق را پذیرفته و موظف به رعایت آن‌ها می‌باشد.</strong>
+        ادعای «از قانون خبر نداشتم» دلیل قابل قبول برای عدم رعایت قوانین نیست.
       </p>
 
       <div class="accept-sign">
