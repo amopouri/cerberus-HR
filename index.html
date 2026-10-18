@@ -1221,6 +1221,142 @@ input{font-family:inherit;}
 }
 
 /* ============================================================
+   DEP CALLS
+   ============================================================ */
+.dep-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));
+  gap:16px;
+}
+.dep-card{
+  position:relative;
+  display:flex;flex-direction:column;
+  padding:20px 20px 16px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(16,16,19,.78), rgba(8,8,10,.78));
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  overflow:hidden;
+  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  animation:fadeUp .45s ease backwards;
+}
+.dep-card::before{
+  content:"";
+  position:absolute;top:0;right:0;
+  width:0;height:1.5px;
+  background:linear-gradient(90deg,var(--crimson-3),transparent);
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 12px var(--crimson);
+}
+.dep-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(200,16,16,.4);
+  box-shadow:0 20px 46px rgba(0,0,0,.55), 0 0 38px rgba(200,16,16,.12);
+}
+.dep-card:hover::before{width:100%;}
+
+.dep-head{
+  display:flex;align-items:center;gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+.dep-title{
+  flex:1;min-width:0;
+  font-size:.9rem;font-weight:800;
+  color:#fff;line-height:1.6;
+}
+.dep-tag{
+  flex-shrink:0;
+  font-family:var(--font-en);
+  font-size:.52rem;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:#ff9090;
+  background:rgba(200,16,16,.12);
+  border:1px solid rgba(200,16,16,.32);
+  border-radius:999px;
+  padding:3px 10px;
+  direction:ltr;
+}
+
+.dep-text{
+  direction:ltr;
+  text-align:left;
+  font-family:var(--mono);
+  font-size:.76rem;
+  line-height:1.95;
+  color:#cfd0d8;
+  background:rgba(5,5,7,.72);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:10px;
+  padding:12px 14px;
+  white-space:pre-wrap;
+  word-break:break-word;
+  flex:1;
+  margin-bottom:14px;
+  user-select:all;
+}
+
+.dep-actions{display:flex;justify-content:flex-end;}
+
+.dep-copy{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:9px 16px;
+  border-radius:10px;
+  font-family:var(--font-en);
+  font-size:.62rem;font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:#ff9090;
+  background:rgba(200,16,16,.10);
+  border:1px solid rgba(200,16,16,.32);
+  transition:all .28s ease;
+}
+.dep-copy svg{
+  width:14px;height:14px;
+  stroke:currentColor;fill:none;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+.dep-copy:hover{
+  background:rgba(200,16,16,.22);
+  color:#fff;
+  border-color:var(--crimson);
+  box-shadow:0 8px 22px rgba(200,16,16,.25);
+  transform:translateY(-1px);
+}
+.dep-copy.copied{
+  color:#7ee2a8;
+  background:rgba(46,204,113,.10);
+  border-color:rgba(46,204,113,.45);
+  box-shadow:0 8px 22px rgba(46,204,113,.18);
+}
+
+#copyToast{
+  position:fixed;
+  bottom:26px;left:50%;
+  transform:translate(-50%,20px);
+  display:flex;align-items:center;gap:10px;
+  padding:12px 22px;
+  border-radius:12px;
+  font-family:var(--font-en);
+  font-size:.64rem;font-weight:800;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;
+  background:linear-gradient(135deg,rgba(200,16,16,.95),rgba(90,3,3,.95));
+  border:1px solid rgba(255,80,80,.45);
+  box-shadow:0 18px 50px rgba(0,0,0,.6), 0 0 40px rgba(200,16,16,.35);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease, transform .3s ease;
+  z-index:300;
+  max-width:90vw;
+}
+#copyToast.show{opacity:1;transform:translate(-50%,0);}
+#copyToast svg{
+  width:16px;height:16px;flex-shrink:0;
+  stroke:#fff;fill:none;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* ============================================================
    ACCEPTANCE
    ============================================================ */
 .accept-box{
@@ -1480,6 +1616,9 @@ input{font-family:inherit;}
   .disc-item{padding:20px 16px;}
 
   .accept-sign{gap:10px 24px;}
+
+  .dep-grid{grid-template-columns:1fr;}
+  .dep-text{font-size:.72rem;}
 }
 
 @media (max-width:400px){
@@ -1586,6 +1725,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
       <li><a href="#rank">RANK REVIEW</a></li>
       <li><a href="#discipline">DISCIPLINE</a></li>
       <li><a href="#radio">RADIO CODES</a></li>
+      <li><a href="#dep">DEP CALLS</a></li>
       <li><a href="#acceptance">ACCEPTANCE</a></li>
     </ul>
   </div>
@@ -2536,6 +2676,289 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 </section>
 
 <!-- ============================================================
+     DEP CALLS
+     ============================================================ -->
+<section class="section" id="dep">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Dispatch Calls</span>
+      <h2 class="sec-title">CERBERUS <em>DEP CALLS</em></h2>
+      <p class="sec-desc">
+        متن آماده دپ‌کال‌های رسمی سازمان. روی دکمه <strong style="color:#fff">COPY</strong> کلیک کنید تا متن مستقیماً در کلیپ‌بورد کپی شود.
+      </p>
+    </div>
+
+    <div class="radio-top reveal">
+      <div class="radio-title">
+        <span class="live"></span>
+        CERBERUS DEP PROTOCOL
+      </div>
+      <div class="search-box">
+        <input type="search" id="depSearch" placeholder="جستجوی دپ‌کال... مثلاً مدیک یا L.S.P.D" autocomplete="off" aria-label="جستجوی دپ کال">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="M21 21l-4.3-4.3"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="radio-meta reveal">
+      <span>Total Dep Calls: <strong id="depCount">0</strong></span>
+      <span>Status: <strong>READY</strong></span>
+    </div>
+
+    <div class="dep-grid" id="depGrid">
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">تایید / Last Call</span>
+          <span class="dep-tag">10-04</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To [ORG], Last Call 10-04, Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار کامند به تگ رادیویی</span>
+          <span class="dep-tag">L.S.P.D</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To L.S.P.D, High Command 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار کامند به تگ رادیویی</span>
+          <span class="dep-tag">B.C.S.D</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To B.C.S.D, High Command 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار ایجنت به تگ رادیویی</span>
+          <span class="dep-tag">F.B.I</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To F.B.I, 1 Agent 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار وکیل به تگ رادیویی</span>
+          <span class="dep-tag">D.O.J</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To D.O.J, 1 Attorney 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار کامند به تگ رادیویی</span>
+          <span class="dep-tag">L.S.M.C</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To L.S.M.C, High Command 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار کامند به تگ رادیویی</span>
+          <span class="dep-tag">L.S.M.D</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To L.S.M.D, High Command 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار کامند به تگ رادیویی</span>
+          <span class="dep-tag">L.S.W.N</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To L.S.W.N, High Command 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار کامند به تگ رادیویی</span>
+          <span class="dep-tag">U.S.N.G</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To U.S.N.G, High Command 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">احضار کامند به تگ رادیویی</span>
+          <span class="dep-tag">L.S.T.D</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To L.S.T.D, High Command 10-45 To Tag , Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">درخواست نیرو</span>
+          <span class="dep-tag">10-70</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To [ORG], 10-70 To 10-20 [LOCATION], 10-45 To Tag, Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">Welcome To Our Station</span>
+          <span class="dep-tag">10-04</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To [ORG], Last Call 10-04: Welcome To Our Station, Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">درخواست مدیک</span>
+          <span class="dep-tag">MEDIC</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To [ORG], Request [N] Medic Unit To 10-20 [LOCATION] | OVER !</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">کد ۱</span>
+          <span class="dep-tag">CODE 1</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To All Law Enforcement, Code 1 10-20 [LOCATION] | OVER !</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">انتقال مظنون</span>
+          <span class="dep-tag">TRANSPORT</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To [ORG], We Are Transporting Suspect To Your Station | OVER !</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">اعلام حرکت عادی به سمت ارگان</span>
+          <span class="dep-tag">MOVING</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To [ORG], We Are Coming To Your Station | OVER !</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+      <article class="dep-card">
+        <div class="dep-head">
+          <span class="dep-title">درخواست ورود به ارگان نظامی</span>
+          <span class="dep-tag">PERMISSION</span>
+        </div>
+        <div class="dep-text">/dep From C.R.B.S To [ORG], Requesting Permission To Enter Your Station, Over!</div>
+        <div class="dep-actions">
+          <button class="dep-copy" type="button">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY
+          </button>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="no-result" id="depNoResult">
+      <strong>NO RESULT FOUND</strong>
+      دپ‌کالی با این عبارت یافت نشد. لطفاً عبارت دیگری را جستجو کنید.
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
      ACCEPTANCE
      ============================================================ -->
 <section class="section" id="acceptance">
@@ -2626,6 +3049,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
           <li><a href="#rank">Rank Review</a></li>
           <li><a href="#discipline">Discipline</a></li>
           <li><a href="#radio">Radio Codes</a></li>
+          <li><a href="#dep">DEP Calls</a></li>
           <li><a href="#acceptance">Acceptance</a></li>
         </ul>
       </div>
@@ -2643,6 +3067,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 
   </div>
 </footer>
+
+<div id="copyToast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+  <span>DEP CALL COPIED</span>
+</div>
 
 <script>
 /* ============================================================
@@ -2846,6 +3275,106 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   });
 
   render(RADIO_CODES);
+
+  /* ---------- DEP CALLS: COPY + SEARCH ---------- */
+  var depGrid     = document.getElementById('depGrid');
+  var depSearch   = document.getElementById('depSearch');
+  var depCount    = document.getElementById('depCount');
+  var depNoResult = document.getElementById('depNoResult');
+  var copyToast   = document.getElementById('copyToast');
+  var depCards    = depGrid ? depGrid.querySelectorAll('.dep-card') : [];
+  var toastTimer  = null;
+
+  function showToast(msg) {
+    if (!copyToast) return;
+    copyToast.querySelector('span').textContent = msg;
+    copyToast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      copyToast.classList.remove('show');
+    }, 1800);
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '-1000px';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text)
+        .then(function () { return true; })
+        .catch(function () { return legacyCopy(text); });
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+
+  if (depGrid) {
+    depGrid.addEventListener('click', function (e) {
+      var btn = e.target.closest('.dep-copy');
+      if (!btn) return;
+
+      var card    = btn.closest('.dep-card');
+      var textEl  = card.querySelector('.dep-text');
+      var text    = textEl ? textEl.textContent.trim() : '';
+      if (!text) return;
+
+      var originalHTML = btn.innerHTML;
+
+      copyToClipboard(text).then(function (ok) {
+        if (ok) {
+          btn.classList.add('copied');
+          btn.innerHTML =
+            '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> COPIED';
+          showToast('DEP CALL COPIED');
+          setTimeout(function () {
+            btn.classList.remove('copied');
+            btn.innerHTML = originalHTML;
+          }, 1900);
+        } else {
+          showToast('COPY FAILED');
+        }
+      });
+    });
+  }
+
+  function filterDepCalls() {
+    if (!depGrid) return;
+    var q = normalize(depSearch.value);
+    var visible = 0;
+
+    depCards.forEach(function (card) {
+      var titleEl = card.querySelector('.dep-title');
+      var textEl  = card.querySelector('.dep-text');
+      var hay = normalize(
+        (titleEl ? titleEl.textContent : '') + ' ' +
+        (textEl ? textEl.textContent : '')
+      );
+      var match = !q || hay.indexOf(q) !== -1;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    depCount.textContent = String(visible);
+    depNoResult.classList.toggle('show', visible === 0);
+  }
+
+  if (depSearch) {
+    depSearch.addEventListener('input', filterDepCalls);
+    depCount.textContent = String(depCards.length);
+    filterDepCalls();
+  }
 
   /* ---------- REVEAL ON SCROLL ---------- */
   var revealEls = document.querySelectorAll('.reveal');
