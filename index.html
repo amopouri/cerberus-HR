@@ -1512,292 +1512,6 @@ input{font-family:inherit;}
 .dev-credit:hover b{color:var(--crimson-3);}
 
 /* ============================================================
-   ROSTER
-   ============================================================ */
-.roster-stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:12px;
-  margin-bottom:24px;
-}
-.stat-card{
-  padding:20px 16px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(16,16,19,.72), rgba(8,8,10,.72));
-  backdrop-filter:blur(10px);
-  text-align:center;
-  transition:all .3s ease;
-}
-.stat-card:hover{
-  border-color:rgba(200,16,16,.35);
-  box-shadow:0 10px 30px rgba(0,0,0,.4), 0 0 24px rgba(200,16,16,.08);
-  transform:translateY(-3px);
-}
-.stat-value{
-  font-family:var(--font-en);
-  font-size:1.8rem;
-  font-weight:900;
-  color:#fff;
-  line-height:1;
-  margin-bottom:8px;
-  text-shadow:0 0 24px rgba(200,16,16,.45);
-}
-.stat-label{
-  font-family:var(--font-en);
-  font-size:.58rem;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--txt-3);
-  font-weight:700;
-}
-
-.rank-breakdown{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:10px;
-  margin-bottom:32px;
-}
-.rank-card{
-  padding:14px 16px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(16,16,19,.65), rgba(8,8,10,.65));
-  backdrop-filter:blur(8px);
-  transition:all .3s ease;
-}
-.rank-card:hover{
-  border-color:rgba(200,16,16,.30);
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(0,0,0,.4);
-}
-.rank-card-name{
-  font-family:var(--font-en);
-  font-size:.56rem;
-  font-weight:800;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:#ff8080;
-  margin-bottom:6px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.rank-card-count{
-  font-family:var(--font-en);
-  font-size:1.15rem;
-  font-weight:900;
-  color:#fff;
-  line-height:1;
-  margin-bottom:8px;
-}
-.rank-card-count span{
-  font-size:.6rem;
-  color:var(--txt-3);
-  font-weight:600;
-  letter-spacing:.08em;
-}
-.rank-card-bar{
-  height:3px;
-  border-radius:2px;
-  background:rgba(255,255,255,.06);
-  overflow:hidden;
-}
-.rank-card-bar div{
-  height:100%;
-  background:linear-gradient(90deg,#c81010,#ff2b2b);
-  border-radius:2px;
-  box-shadow:0 0 8px rgba(200,16,16,.5);
-  transition:width .8s cubic-bezier(.4,0,.2,1);
-}
-
-.roster-controls{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-bottom:24px;
-  align-items:center;
-}
-.roster-controls .search-box{
-  flex:1;
-  min-width:min(260px,100%);
-  max-width:420px;
-}
-.roster-select{
-  padding:14px 18px;
-  padding-left:38px;
-  border-radius:10px;
-  border:1px solid var(--line);
-  background:rgba(5,5,7,.85);
-  color:#fff;
-  font-size:.82rem;
-  font-family:var(--font);
-  outline:none;
-  cursor:pointer;
-  transition:border-color .3s ease, box-shadow .3s ease;
-  appearance:none;
-  -webkit-appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7a86' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:left 14px center;
-}
-.roster-select:hover{border-color:rgba(200,16,16,.30);}
-.roster-select:focus{
-  border-color:var(--crimson);
-  box-shadow:0 0 0 3px rgba(200,16,16,.14);
-}
-.roster-select option{
-  background:#0c0c0f;
-  color:#fff;
-}
-
-.roster-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));
-  gap:14px;
-}
-
-.member-card{
-  position:relative;
-  padding:20px 20px 16px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(16,16,19,.78), rgba(8,8,10,.78));
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  overflow:hidden;
-  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-  animation:fadeUp .45s ease backwards;
-}
-.member-card::before{
-  content:"";
-  position:absolute;top:0;right:0;
-  width:0;height:1.5px;
-  background:linear-gradient(90deg,var(--crimson-3),transparent);
-  transition:width .5s cubic-bezier(.4,0,.2,1);
-  box-shadow:0 0 12px var(--crimson);
-}
-.member-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(200,16,16,.4);
-  box-shadow:0 20px 46px rgba(0,0,0,.55), 0 0 38px rgba(200,16,16,.12);
-}
-.member-card:hover::before{width:100%;}
-
-.member-top{
-  display:flex;align-items:center;gap:12px;
-  margin-bottom:14px;
-}
-.member-badge{
-  flex-shrink:0;
-  width:46px;height:46px;
-  display:grid;place-items:center;
-  border-radius:12px;
-  font-family:var(--mono);
-  font-size:.66rem;font-weight:800;
-  color:#ff9090;
-  background:linear-gradient(150deg, rgba(200,16,16,.16), rgba(16,16,19,.6));
-  border:1px solid rgba(200,16,16,.30);
-  box-shadow:inset 0 0 18px rgba(200,16,16,.08);
-  letter-spacing:-.02em;
-  text-align:center;
-  line-height:1.2;
-}
-.member-head-info{flex:1;min-width:0;}
-.member-rank{
-  font-family:var(--font-en);
-  font-size:.56rem;font-weight:800;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:#ff8080;
-  margin-bottom:2px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.member-name{
-  font-size:.92rem;font-weight:800;
-  color:#fff;line-height:1.4;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.member-status{
-  flex-shrink:0;
-  font-family:var(--font-en);
-  font-size:.48rem;font-weight:800;
-  letter-spacing:.16em;text-transform:uppercase;
-  padding:3px 8px;
-  border-radius:999px;
-  border:1px solid;
-  line-height:1.5;
-}
-.member-status.active{
-  color:#7ee2a8;
-  background:rgba(46,204,113,.08);
-  border-color:rgba(46,204,113,.35);
-}
-.member-status.deactive{
-  color:#ffb160;
-  background:rgba(255,140,0,.08);
-  border-color:rgba(255,140,0,.35);
-}
-.member-status.none{
-  color:var(--txt-3);
-  background:rgba(255,255,255,.03);
-  border-color:var(--line-2);
-}
-
-.member-details{
-  display:flex;flex-direction:column;gap:4px;
-  font-size:.78rem;
-}
-.member-row{
-  display:flex;justify-content:space-between;gap:10px;
-  padding:4px 0;
-  border-bottom:1px dashed rgba(255,255,255,.04);
-}
-.member-row:last-child{border-bottom:none;}
-.member-row .label{
-  color:var(--txt-3);
-  font-family:var(--font-en);
-  font-size:.58rem;letter-spacing:.1em;
-  text-transform:uppercase;font-weight:700;
-  flex-shrink:0;
-}
-.member-row .value{
-  color:var(--txt);
-  text-align:left;
-  word-break:break-word;
-  direction:ltr;
-}
-.member-row .value.mono{
-  font-family:var(--mono);
-  font-size:.74rem;
-  color:#cfd0d8;
-}
-.member-tags{
-  display:flex;flex-wrap:wrap;gap:5px;
-  margin-top:10px;
-  padding-top:10px;
-  border-top:1px dashed rgba(255,255,255,.04);
-}
-.member-tag{
-  font-family:var(--font-en);
-  font-size:.5rem;font-weight:800;
-  letter-spacing:.15em;text-transform:uppercase;
-  padding:3px 9px;
-  border-radius:999px;
-  color:#ff9090;
-  background:rgba(200,16,16,.08);
-  border:1px solid rgba(200,16,16,.24);
-}
-.member-tag.warn{
-  color:#ffb160;
-  background:rgba(255,140,0,.08);
-  border-color:rgba(255,140,0,.30);
-}
-
-/* ============================================================
    ANIMATIONS
    ============================================================ */
 @keyframes fadeUp{
@@ -1896,12 +1610,6 @@ input{font-family:inherit;}
   .radio-top{padding:20px;flex-direction:column;align-items:stretch;}
   .search-box{max-width:none;min-width:0;}
 
-  .roster-stats{grid-template-columns:1fr 1fr;}
-  .rank-breakdown{grid-template-columns:1fr 1fr;}
-  .roster-controls{flex-direction:column;align-items:stretch;}
-  .roster-controls .search-box{max-width:none;min-width:0;}
-  .roster-select{width:100%;}
-
   .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px;}
 
   .card{padding:24px 20px;}
@@ -1911,10 +1619,6 @@ input{font-family:inherit;}
 
   .dep-grid{grid-template-columns:1fr;}
   .dep-text{font-size:.72rem;}
-
-  .member-card{padding:16px 16px 14px;}
-  .member-badge{width:40px;height:40px;font-size:.58rem;}
-  .member-name{font-size:.86rem;}
 }
 
 @media (max-width:400px){
@@ -1924,11 +1628,9 @@ input{font-family:inherit;}
   .btn{padding:14px 22px;font-size:.68rem;}
   .code-badge{font-size:.5rem;letter-spacing:.18em;}
   .price-value{font-size:2.4rem;}
-  .roster-stats{grid-template-columns:1fr;}
-  .rank-breakdown{grid-template-columns:1fr;}
 }
 
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+a:focus-visible,button:focus-visible,input:focus-visible{
   outline:2px solid var(--crimson-3);
   outline-offset:3px;
   border-radius:6px;
@@ -2018,7 +1720,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="active">HOME</a></li>
       <li><a href="#handbook">HANDBOOK</a></li>
-      <li><a href="#roster">ROSTER</a></li>
       <li><a href="#duties">DUTIES</a></li>
       <li><a href="#services">SERVICES</a></li>
       <li><a href="#rank">RANK REVIEW</a></li>
@@ -2450,6 +2151,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         </div>
       </article>
 
+      <!-- ==================================================
+           NEW ARTICLES (from updated handbook)
+           ================================================== -->
+
       <article class="acc-item reveal">
         <button class="acc-head" aria-expanded="false">
           <span class="acc-num">11</span>
@@ -2467,14 +2172,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
               <li>در محل مأموریت حضور داشته باشند.</li>
               <li>از امکانات سازمانی به‌درستی استفاده کنند.</li>
             </ol>
-            <p style="margin-top:16px;"><span class="hl">Off Duty</span></p>
+            <p style="margin-top:16px;"><span class="hl">:black_circle: Off Duty</span></p>
             <p>برای انجام کارهای شخصی یا فعالیت‌های خارج از وظایف سازمان:</p>
             <ol class="acc-list">
               <li>ابتدا Off Duty کنید.</li>
               <li>پس از پایان کار شخصی، مجدداً به سازمان برگشته و On Duty شوید.</li>
             </ol>
             <p style="margin-top:16px;">
-              <span class="hl">انجام فعالیت شخصی در حالت Duty بدون هماهنگی تخلف محسوب می‌شود و روی رنکاپ تأثیر منفی دارد.</span>
+              <span class="hl">:warning: انجام فعالیت شخصی در حالت Duty بدون هماهنگی تخلف محسوب می‌شود و روی رنکاپ تأثیر منفی دارد.</span>
             </p>
           </div>
         </div>
@@ -2492,10 +2197,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
           <div class="acc-body-inner">
             <p>اعضای <span class="hl">CERBERUS</span> فقط می‌توانند:</p>
             <ol class="acc-list">
-              <li>عضو گنگ <span class="hl">Military</span> باشند</li>
-              <li>اصلاً عضو هیچ گنگی نباشند.</li>
+              <li>:white_check_mark: عضو گنگ <span class="hl">Military</span> باشند</li>
+              <li>:white_check_mark: اصلاً عضو هیچ گنگی نباشند.</li>
             </ol>
-            <p style="margin-top:16px;"><span class="hl">عضویت در هر گنگ دیگری ممنوع است.</span></p>
+            <p style="margin-top:16px;"><span class="hl">:x: عضویت در هر گنگ دیگری ممنوع است.</span></p>
             <p>در صورت مشخص شدن عضویت فرد در گنگی غیر از Military، اخراج فرد از سازمان می‌تواند از همان ابتدا انجام شود.</p>
           </div>
         </div>
@@ -2562,28 +2267,28 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         </button>
         <div class="acc-body">
           <div class="acc-body-inner">
-            <p><span class="hl">رنکاپ: هر جمعه ساعت ۸ شب</span></p>
+            <p><span class="hl">:date: رنکاپ: هر جمعه ساعت ۸ شب</span></p>
             <p>تمام فعالیت‌های اعضا تا زمان رنکاپ بررسی می‌شود.</p>
             <p style="margin-top:12px;"><span class="hl">موارد مؤثر:</span></p>
             <ol class="acc-list">
-              <li>حضور و فعالیت</li>
-              <li>فعالیت‌های امنیتی</li>
-              <li>فعالیت‌های بادیگاردی</li>
-              <li>نحوه بازداشت</li>
-              <li>کیفیت RP</li>
-              <li>همکاری با ارگان‌ها</li>
-              <li>رعایت قوانین</li>
-              <li>مسئولیت‌پذیری</li>
-              <li>نحوه انجام مأموریت‌ها</li>
-              <li>رعایت Duty و Off Duty</li>
-              <li>رفتار با شهروندان و ارگان‌ها</li>
+              <li>:alarm_clock: حضور و فعالیت</li>
+              <li>🛡 فعالیت‌های امنیتی</li>
+              <li>:bust_in_silhouette: فعالیت‌های بادیگاردی</li>
+              <li>:oncoming_police_car: نحوه بازداشت</li>
+              <li>:performing_arts: کیفیت RP</li>
+              <li>🤝 همکاری با ارگان‌ها</li>
+              <li>:clipboard: رعایت قوانین</li>
+              <li>🎖 مسئولیت‌پذیری</li>
+              <li>:cop: نحوه انجام مأموریت‌ها</li>
+              <li>:arrows_counterclockwise: رعایت Duty و Off Duty</li>
+              <li>:speech_balloon: رفتار با شهروندان و ارگان‌ها</li>
             </ol>
             <p style="margin-top:16px;"><span class="hl">نتیجه رنکاپ:</span></p>
             <div class="chip-row">
-              <span class="chip">ارتقای رنک</span>
-              <span class="chip">ثابت ماندن رنک</span>
-              <span class="chip">تنزل رنک</span>
-              <span class="chip">اخطار</span>
+              <span class="chip">:arrow_up: ارتقای رنک</span>
+              <span class="chip">:heavy_minus_sign: ثابت ماندن رنک</span>
+              <span class="chip">:arrow_down: تنزل رنک</span>
+              <span class="chip">:warning: اخطار</span>
             </div>
             <p style="margin-top:12px;">تصمیم نهایی رنکاپ بر عهده مدیریت سازمان است.</p>
           </div>
@@ -2602,11 +2307,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
           <div class="acc-body-inner">
             <p>در صورت تخلف، مدیریت با توجه به شدت آن می‌تواند اعمال کند:</p>
             <div class="chip-row">
-              <span class="chip">اخطار</span>
-              <span class="chip">جریمه</span>
-              <span class="chip">تنزل رنک</span>
-              <span class="chip">تعلیق فعالیت</span>
-              <span class="chip">اخراج از سازمان</span>
+              <span class="chip">:warning: اخطار</span>
+              <span class="chip">:moneybag: جریمه</span>
+              <span class="chip">:arrow_down: تنزل رنک</span>
+              <span class="chip">⏸ تعلیق فعالیت</span>
+              <span class="chip">:x: اخراج از سازمان</span>
             </div>
           </div>
         </div>
@@ -2659,11 +2364,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <div class="acc-body">
           <div class="acc-body-inner">
             <p style="text-align:center;font-weight:700;color:#fff;line-height:2.4;">
-              امنیت | نظم | RP صحیح | فعالیت | مسئولیت‌پذیری | احترام | همکاری
+              🛡 امنیت | نظم | RP صحیح | فعالیت | مسئولیت‌پذیری | احترام | همکاری
             </p>
             <p>این موارد پایه اصلی فعالیت در CERBERUS هستند.</p>
             <p>
-              <span class="hl">تمامی اعضا موظف‌اند قوانین را مطالعه کرده و رعایت کنند.
+              <span class="hl">:warning: تمامی اعضا موظف‌اند قوانین را مطالعه کرده و رعایت کنند.
               در صورت عدم رعایت، فرد مسئول عواقب تخلف خود خواهد بود.</span>
             </p>
           </div>
@@ -2671,79 +2376,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
       </article>
 
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     ROSTER
-     ============================================================ -->
-<section class="section" id="roster">
-  <div class="wrap">
-
-    <div class="sec-head reveal">
-      <span class="sec-kicker">Personnel Database</span>
-      <h2 class="sec-title">CERBERUS <em>ROSTER</em></h2>
-      <p class="sec-desc">
-        فهرست کامل اعضای سازمان CERBERUS به همراه رنک، بج‌نامبر، دیویژن و وضعیت فعالیت.
-        از فیلترها و جستجو برای یافتن سریع اعضا استفاده کنید.
-      </p>
-    </div>
-
-    <!-- Stats -->
-    <div class="roster-stats reveal">
-      <div class="stat-card">
-        <div class="stat-value">128</div>
-        <div class="stat-label">Total Slots</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">39</div>
-        <div class="stat-label">Members</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="activeCount">0</div>
-        <div class="stat-label">Active</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="deactiveCount">0</div>
-        <div class="stat-label">Deactive</div>
-      </div>
-    </div>
-
-    <!-- Rank Breakdown -->
-    <div class="rank-breakdown reveal" id="rankBreakdown"></div>
-
-    <!-- Controls -->
-    <div class="roster-controls reveal">
-      <div class="search-box">
-        <input type="search" id="rosterSearch" placeholder="جستجوی نام، بج، رنک یا تلگرام..." autocomplete="off" aria-label="جستجوی اعضا">
-        <svg viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="7"/>
-          <path d="M21 21l-4.3-4.3"/>
-        </svg>
-      </div>
-      <select class="roster-select" id="rankFilter" aria-label="فیلتر رنک">
-        <option value="">All Ranks</option>
-      </select>
-      <select class="roster-select" id="statusFilter" aria-label="فیلتر وضعیت">
-        <option value="">All Status</option>
-        <option value="Active">Active</option>
-        <option value="Deactive">Deactive</option>
-        <option value="—">N/A</option>
-      </select>
-    </div>
-
-    <div class="radio-meta reveal">
-      <span>Showing: <strong id="rosterCount">0</strong> members</span>
-      <span>Status: <strong>LIVE</strong></span>
-    </div>
-
-    <div class="roster-grid" id="rosterGrid"></div>
-
-    <div class="no-result" id="rosterNoResult">
-      <strong>NO RESULT FOUND</strong>
-      عضوی با این مشخصات یافت نشد. لطفاً عبارت دیگری را جستجو کنید.
-    </div>
-
   </div>
 </section>
 
@@ -3406,7 +3038,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#handbook">Handbook</a></li>
-          <li><a href="#roster">Roster</a></li>
           <li><a href="#duties">Duties</a></li>
           <li><a href="#services">Services</a></li>
         </ul>
@@ -3534,25 +3165,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     if (open) open.style.maxHeight = open.scrollHeight + 'px';
   });
 
-  /* ---------- HELPERS ---------- */
-  var PER_DIGIT = { '۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9',
-                    '٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9' };
-
-  function normalize(str) {
-    return String(str)
-      .replace(/[۰-۹٠-٩]/g, function (d) { return PER_DIGIT[d] || d; })
-      .toLowerCase()
-      .trim();
-  }
-
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
   /* ---------- RADIO CODES DATA ---------- */
   var RADIO_CODES = [
     { code: '10-1',  en: 'All Units Respond',            fa: 'اجتماع تمامی نیروها در مکان مشخص‌شده' },
@@ -3597,11 +3209,29 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     { code: 'Down Officer/Suspect', en: 'Officer Or Suspect Down', fa: 'Officer یا متهم زخمی و مجروح شده' }
   ];
 
-  /* ---------- RENDER RADIO ---------- */
+  /* ---------- RENDER ---------- */
   var grid = document.getElementById('codesGrid');
   var noResult = document.getElementById('noResult');
   var codeCount = document.getElementById('codeCount');
   var search = document.getElementById('radioSearch');
+
+  var PER_DIGIT = { '۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9',
+                    '٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9' };
+
+  function normalize(str) {
+    return String(str)
+      .replace(/[۰-۹٠-٩]/g, function (d) { return PER_DIGIT[d] || d; })
+      .toLowerCase()
+      .trim();
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
   function render(list) {
     if (!list.length) {
@@ -3627,7 +3257,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     grid.innerHTML = html;
   }
 
-  /* ---------- RADIO SEARCH ---------- */
+  /* ---------- SEARCH ---------- */
   var rafId = null;
   search.addEventListener('input', function () {
     if (rafId) cancelAnimationFrame(rafId);
@@ -3744,189 +3374,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     depSearch.addEventListener('input', filterDepCalls);
     depCount.textContent = String(depCards.length);
     filterDepCalls();
-  }
-
-  /* ============================================================
-     ROSTER DATA
-     ============================================================ */
-  var ROSTER = [
-    { num:'001', rank:'Boos',        badge:'BS-01',  ic:'True Alpha',          oc:'—',            tg:'truealpha00',  div:'All',          status:'Active',   points:0, warns:0 },
-    { num:'002', rank:'Hector',      badge:'HC-01',  ic:'Alessandro Corleone', oc:'Mohamad Amin',  tg:'mohammadltrm', div:'All',          status:'Active',   points:0, warns:0 },
-    { num:'004', rank:'Protector',   badge:'PR-01',  ic:'Vitoromano Corleone', oc:'Saeed',        tg:'Saeedzmp',     div:'All',          status:'Active',   points:0, warns:0 },
-    { num:'005', rank:'Protector',   badge:'PR-02',  ic:'Stefan Salvatore',    oc:'AliAlpha',      tg:'aliirezakn',   div:'All',          status:'Active',   points:0, warns:0 },
-    { num:'007', rank:'Logestic',    badge:'LO-01',  ic:'Tiam Hill',           oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'009', rank:'Lawyer',      badge:'LA-01',  ic:'Amir Khann',          oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'012', rank:'Inspector',   badge:'IS-01',  ic:'Tommy Angello',       oc:'—',            tg:'Hamed_Zer0',   div:'Phantom, HR',  status:'Active',   points:0, warns:0 },
-    { num:'013', rank:'Inspector',   badge:'IS-02',  ic:'Hanyeh Jahn',         oc:'—',            tg:'hanmiwo',      div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'014', rank:'Inspector',   badge:'IS-03',  ic:'Reza Nova',           oc:'—',            tg:'—',            div:'—',            status:'Active',   points:1, warns:0 },
-    { num:'017', rank:'HeadSPY',     badge:'HY-01',  ic:'Dante Corleone',      oc:'—',            tg:'Black222m',    div:'HR, Spy',      status:'Active',   points:0, warns:0 },
-    { num:'018', rank:'HeadSPY',     badge:'HY-02',  ic:'Adoulf Corleone',     oc:'Matin Katebi',  tg:'loolmatinn',   div:'—',            status:'Active',   points:0, warns:1 },
-    { num:'020', rank:'SPY',         badge:'SY-01',  ic:'Mahan Asgari',        oc:'Mahan Asgari',  tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'025', rank:'Specialist',  badge:'SP-01',  ic:'Hosin Jaxon',         oc:'Hosein',        tg:'—',            div:'—',            status:'Active',   points:0, warns:2 },
-    { num:'026', rank:'Specialist',  badge:'SP-02',  ic:'Ali Fonixx',          oc:'—',            tg:'—',            div:'—',            status:'Deactive', points:0, warns:0 },
-    { num:'027', rank:'Specialist',  badge:'SP-03',  ic:'Vincenzo Corleone',   oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'028', rank:'Specialist',  badge:'SP-04',  ic:'Haj Vaster',          oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'029', rank:'Specialist',  badge:'SP-05',  ic:'Pouria Vinic',        oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'030', rank:'BodyGuard II',badge:'BG-01',  ic:'Sonnycarlo Corleone', oc:'—',            tg:'Daniyal_ra27', div:'—',            status:'Deactive', points:0, warns:0 },
-    { num:'031', rank:'BodyGuard II',badge:'BG-02',  ic:'Mamad Ty',            oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'032', rank:'BodyGuard II',badge:'BG-03',  ic:'Mani Jalili',         oc:'Mani Jalili',   tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'033', rank:'BodyGuard II',badge:'BG-04',  ic:'Michael Corleone',    oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'034', rank:'BodyGuard II',badge:'BG-05',  ic:'Mani Dehghan',        oc:'Mani Dehghan',  tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'035', rank:'BodyGuard II',badge:'BG-06',  ic:'Alii Subipoor',       oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'036', rank:'BodyGuard II',badge:'BG-07',  ic:'Nova Corona',         oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'037', rank:'BodyGuard II',badge:'BG-08',  ic:'Amo Rad',             oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'041', rank:'BodyGuard I', badge:'BG-12',  ic:'Alii Subipoor',       oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'042', rank:'BodyGuard I', badge:'BG-13',  ic:'Fardin Hb',           oc:'—',            tg:'—',            div:'—',            status:'Deactive', points:0, warns:0 },
-    { num:'043', rank:'BodyGuard I', badge:'BG-14',  ic:'Ali Stress',          oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:1 },
-    { num:'044', rank:'BodyGuard I', badge:'BG-15',  ic:'Alireza Lucipor',     oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'045', rank:'BodyGuard I', badge:'BG-16',  ic:'Shina Shehni',        oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'046', rank:'BodyGuard I', badge:'BG-17',  ic:'Kamyar Najafi',       oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'070', rank:'Security II', badge:'SEC-01', ic:'A Kocholo',           oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'071', rank:'Security II', badge:'SEC-02', ic:'Ded Killer',          oc:'Mohamad',       tg:'Mohamad_936',  div:'—',            status:'Deactive', points:0, warns:0 },
-    { num:'100', rank:'Security I',  badge:'SEC-31', ic:'Niyoosha Jahan',      oc:'—',            tg:'—',            div:'—',            status:'Deactive', points:0, warns:0 },
-    { num:'101', rank:'Security I',  badge:'SEC-32', ic:'Omid Po',             oc:'—',            tg:'—',            div:'—',            status:'Deactive', points:0, warns:0 },
-    { num:'102', rank:'Security I',  badge:'SEC-33', ic:'Ghost Sr',            oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'103', rank:'Security I',  badge:'SEC-34', ic:'Eve Moradi',          oc:'—',            tg:'—',            div:'—',            status:'Active',   points:0, warns:0 },
-    { num:'104', rank:'Security I',  badge:'SEC-35', ic:'Parsa Ghambari',      oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 },
-    { num:'105', rank:'Security I',  badge:'SEC-36', ic:'Valter Joooooon',     oc:'—',            tg:'—',            div:'—',            status:'—',        points:0, warns:0 }
-  ];
-
-  var RANKS = [
-    { name:'Boos',        slots:1,  members:1 },
-    { name:'Hector',      slots:2,  members:1 },
-    { name:'Protector',   slots:3,  members:2 },
-    { name:'Logestic',    slots:2,  members:1 },
-    { name:'Lawyer',      slots:3,  members:1 },
-    { name:'Inspector',   slots:5,  members:3 },
-    { name:'HeadSPY',     slots:2,  members:2 },
-    { name:'SPY',         slots:5,  members:1 },
-    { name:'Specialist',  slots:5,  members:5 },
-    { name:'BodyGuard II',slots:10, members:8 },
-    { name:'BodyGuard I', slots:30, members:6 },
-    { name:'Security II', slots:30, members:2 },
-    { name:'Security I',  slots:30, members:6 }
-  ];
-
-  /* ---------- ROSTER STATS ---------- */
-  var activeCountEl = document.getElementById('activeCount');
-  var deactiveCountEl = document.getElementById('deactiveCount');
-  if (activeCountEl) {
-    var activeN = 0, deactiveN = 0;
-    ROSTER.forEach(function(m){
-      if (m.status === 'Active') activeN++;
-      else if (m.status === 'Deactive') deactiveN++;
-    });
-    activeCountEl.textContent = String(activeN);
-    deactiveCountEl.textContent = String(deactiveN);
-  }
-
-  /* ---------- RANK BREAKDOWN ---------- */
-  var rankBreakdown = document.getElementById('rankBreakdown');
-  if (rankBreakdown) {
-    var rbHtml = '';
-    RANKS.forEach(function(r){
-      var pct = r.slots > 0 ? Math.round((r.members / r.slots) * 100) : 0;
-      rbHtml +=
-        '<div class="rank-card">' +
-          '<div class="rank-card-name">' + r.name + '</div>' +
-          '<div class="rank-card-count">' + r.members + ' <span>/ ' + r.slots + '</span></div>' +
-          '<div class="rank-card-bar"><div style="width:' + pct + '%"></div></div>' +
-        '</div>';
-    });
-    rankBreakdown.innerHTML = rbHtml;
-  }
-
-  /* ---------- ROSTER RENDER ---------- */
-  var rosterGrid = document.getElementById('rosterGrid');
-  var rosterNoResult = document.getElementById('rosterNoResult');
-  var rosterCountEl = document.getElementById('rosterCount');
-
-  function renderRoster(list) {
-    if (!rosterGrid) return;
-    if (!list.length) {
-      rosterGrid.innerHTML = '';
-      rosterNoResult.classList.add('show');
-      rosterCountEl.textContent = '0';
-      return;
-    }
-    rosterNoResult.classList.remove('show');
-    rosterCountEl.textContent = String(list.length);
-
-    var html = '';
-    for (var i = 0; i < list.length; i++) {
-      var m = list[i];
-      var statusClass = m.status === 'Active' ? 'active' : (m.status === 'Deactive' ? 'deactive' : 'none');
-      var statusLabel = m.status === 'Active' ? 'ACTIVE' : (m.status === 'Deactive' ? 'DEACTIVE' : 'N/A');
-
-      var details = '';
-      if (m.oc !== '—') details += '<div class="member-row"><span class="label">OC</span><span class="value">' + escapeHtml(m.oc) + '</span></div>';
-      if (m.tg !== '—') details += '<div class="member-row"><span class="label">Telegram</span><span class="value mono">@' + escapeHtml(m.tg) + '</span></div>';
-      if (m.div !== '—') details += '<div class="member-row"><span class="label">Division</span><span class="value">' + escapeHtml(m.div) + '</span></div>';
-
-      var tags = '';
-      if (m.points > 0) tags += '<span class="member-tag">' + m.points + ' POINT</span>';
-      if (m.warns > 0) tags += '<span class="member-tag warn">' + m.warns + ' WARN</span>';
-
-      html +=
-        '<article class="member-card" style="animation-delay:' + Math.min(i * 16, 400) + 'ms">' +
-          '<div class="member-top">' +
-            '<div class="member-badge">' + escapeHtml(m.badge) + '</div>' +
-            '<div class="member-head-info">' +
-              '<div class="member-rank">' + escapeHtml(m.rank) +
-                ' <span style="color:var(--txt-4);font-weight:600">· #' + escapeHtml(m.num) + '</span>' +
-              '</div>' +
-              '<div class="member-name">' + escapeHtml(m.ic) + '</div>' +
-            '</div>' +
-            '<span class="member-status ' + statusClass + '">' + statusLabel + '</span>' +
-          '</div>' +
-          (details ? '<div class="member-details">' + details + '</div>' : '') +
-          (tags ? '<div class="member-tags">' + tags + '</div>' : '') +
-        '</article>';
-    }
-    rosterGrid.innerHTML = html;
-  }
-
-  /* ---------- ROSTER FILTERS ---------- */
-  var rosterSearch = document.getElementById('rosterSearch');
-  var rankFilter = document.getElementById('rankFilter');
-  var statusFilter = document.getElementById('statusFilter');
-
-  if (rankFilter) {
-    RANKS.forEach(function(r){
-      var opt = document.createElement('option');
-      opt.value = r.name;
-      opt.textContent = r.name;
-      rankFilter.appendChild(opt);
-    });
-  }
-
-  function filterRoster() {
-    if (!rosterGrid) return;
-    var q = normalize(rosterSearch.value);
-    var rank = rankFilter.value;
-    var status = statusFilter.value;
-
-    var filtered = ROSTER.filter(function(m) {
-      if (rank && m.rank !== rank) return false;
-      if (status && m.status !== status) return false;
-      if (q) {
-        var hay = normalize(
-          m.num + ' ' + m.rank + ' ' + m.badge + ' ' + m.ic + ' ' +
-          m.oc + ' ' + m.tg + ' ' + m.div + ' ' + m.status
-        );
-        if (hay.indexOf(q) === -1) return false;
-      }
-      return true;
-    });
-
-    renderRoster(filtered);
-  }
-
-  if (rosterGrid) {
-    rosterSearch.addEventListener('input', filterRoster);
-    rankFilter.addEventListener('change', filterRoster);
-    statusFilter.addEventListener('change', filterRoster);
-    renderRoster(ROSTER);
   }
 
   /* ---------- REVEAL ON SCROLL ---------- */
